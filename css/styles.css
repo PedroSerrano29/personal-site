@@ -288,8 +288,24 @@ footer {
 /* PRINT SETTINGS */
 
 @media print {
+
+
+    /* Remove backgrounds and colors for ink savings */
+    body, .content-bg, footer {
+        background: none !important;
+        color: #000 !important;
+    }
     ::before, .download-link  {
         display: none;
+    }
+
+    .resume-section,
+    .project-item,
+    .work-item,
+    .education-item,
+    .work-details {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
     }
 
     body {
