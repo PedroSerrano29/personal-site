@@ -1,0 +1,81 @@
+/* Custom styles for Inter font and general layout */
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f4f8; /* Light blue-gray background */
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.container {
+    max-width: 900px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.time-section {
+    margin-bottom: 40px; /* Space between sections */
+}
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 16px;
+    min-width: 100px; /* Ensure consistent width for each unit */
+}
+.time-value {
+    font-size: 3rem; /* Larger font for numbers */
+    font-weight: 700; /* Bold numbers */
+    color: #2c5282; /* Dark blue */
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.time-label {
+    font-size: 1.1rem; /* Slightly larger font for labels */
+    color: #4a5568; /* Grayish blue */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .time-display {
+        flex-wrap: wrap; /* Allow units to wrap on smaller screens */
+        justify-content: center;
+    }
+    .time-unit {
+        margin: 10px; /* Adjust margin for wrapped items */
+        min-width: unset; /* Remove min-width for flexibility */
+        width: 45%; /* Two columns on small screens */
+    }
+    .time-value {
+        font-size: 2.5rem; /* Smaller font for numbers on mobile */
+    }
+    .time-label {
+        font-size: 0.9rem; /* Smaller font for labels on mobile */
+    }
+    .container {
+        padding: 24px;
+    }
+    .time-section {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .time-value {
+        font-size: 2rem;
+    }
+    .time-label {
+        font-size: 0.8rem;
+    }
+    .time-unit {
+        width: 100%; /* One column on very small screens */
+    }
+}
