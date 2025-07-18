@@ -64,10 +64,10 @@ function updateCounter() {
     totalDaysElement.textContent = totalDays;
 
     // Update labels for TOTALS pluralization
-    totalYearsLabel.textContent = totalYears === 1 ? 'Total de Ano' : 'Total de Anos';
-    totalMonthsLabel.textContent = totalMonths === 1 ? 'Total de Mês' : 'Total de Meses';
-    totalWeeksLabel.textContent = totalWeeks === 1 ? 'Total de Semana' : 'Total de Semanas';
-    totalDaysLabel.textContent = totalDays === 1 ? 'Total de Dia' : 'Total de Dias';
+    totalYearsLabel.textContent = totalYears === 1 ? 'Total de Ano' : 'Anos';
+    totalMonthsLabel.textContent = totalMonths === 1 ? 'Total de Mês' : 'Meses';
+    totalWeeksLabel.textContent = totalWeeks === 1 ? 'Total de Semana' : 'Semanas';
+    totalDaysLabel.textContent = totalDays === 1 ? 'Total de Dia' : 'Dias';
 
 
     // --- Calculations for REMAINING (by unit) ---
