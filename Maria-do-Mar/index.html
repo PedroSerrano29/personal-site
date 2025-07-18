@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo decorrido desde o nascimento da Mar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link para o ficheiro CSS externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-8">Tempo decorrido desde o nascimento da Mar</h1>
+        <p class="text-xl md:text-2xl text-gray-600 mb-10">Início: 23 de janeiro de 2025, às 19:47 (Hora de Portugal)</p>
+
+        <!-- Seção de Tempo Total -->
+        <div class="time-section">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-700 mb-6">Totais Decorridos</h2>
+            <div class="time-display flex flex-wrap justify-center items-end gap-y-6">
+                <div class="time-unit">
+                    <span id="totalYears" class="time-value">0</span>
+                    <span id="totalYears-label" class="time-label">Total de Anos</span>
+                </div>
+                <div class="time-unit">
+                    <span id="totalMonths" class="time-value">0</span>
+                    <span id="totalMonths-label" class="time-label">Total de Meses</span>
+                </div>
+                <div class="time-unit">
+                    <span id="totalWeeks" class="time-value">0</span>
+                    <span id="totalWeeks-label" class="time-label">Total de Semanas</span>
+                </div>
+                <div class="time-unit">
+                    <span id="totalDays" class="time-value">0</span>
+                    <span id="totalDays-label" class="time-label">Total de Dias</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Tempo Restante (como na primeira versão) -->
+        <div class="time-section mt-10 pt-8 border-t-2 border-gray-200">
+         <!--    <h2 class="text-3xl md:text-4xl font-bold text-gray-700 mb-6">Tempo Restante (por unidade)</h2>  -->
+            <div class="time-display flex flex-wrap justify-center items-end gap-y-6">
+                <div class="time-unit">
+                    <span id="remainingYears" class="time-value">0</span>
+                    <span id="remainingYears-label" class="time-label">Anos</span>
+                </div>
+                <div class="time-unit">
+                    <span id="remainingWeeks" class="time-value">0</span>
+                    <span id="remainingWeeks-label" class="time-label">Semanas</span>
+                </div>
+                <div class="time-unit">
+                    <span id="remainingDays" class="time-value">0</span>
+                    <span id="remainingDays-label" class="time-label">Dias</span>
+                </div>
+                <div class="time-unit">
+                    <span id="remainingHours" class="time-value">0</span>
+                    <span id="remainingHours-label" class="time-label">Horas</span>
+                </div>
+                <div class="time-unit">
+                    <span id="remainingMinutes" class="time-value">0</span>
+                    <span id="remainingMinutes-label" class="time-label">Minutos</span>
+                </div>
+                <div class="time-unit">
+                    <span id="remainingSeconds" class="time-value">0</span>
+                    <span id="remainingSeconds-label" class="time-label">Segundos</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link para o ficheiro JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
