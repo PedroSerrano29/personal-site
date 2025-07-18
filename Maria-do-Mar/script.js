@@ -1,6 +1,6 @@
 // Define the start date and time in Portuguese local time (Lisbon)
 // On Jan 23, 2025, Portugal will be in WET (UTC+0).
-const startDate = new Date('2025-01-23T19:47:00'); // This creates a Date object in the local timezone of the browser
+const startDate = new Date('2025-01-23T19:33:00'); // This creates a Date object in the local timezone of the browser
 
 // Get references to the display elements for TOTALS
 const totalYearsElement = document.getElementById('totalYears');
