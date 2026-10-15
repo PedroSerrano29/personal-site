@@ -151,6 +151,10 @@
   .destaques { font-size: 10pt; }
   .destaques li { padding-left: 10pt; }
   .destaques li::before { content: "•"; color: #111; left: 0; }
+  /* Sem posicionamento: elementos posicionados vão para o fim do PDF e o ATS lê-os fora de ordem */
+  .funcao, .destaques li, .destaques li::before { position: static; }
+  .destaques li { text-indent: -10pt; }
+  .destaques li::before { display: inline-block; width: 10pt; text-indent: 0; }
   .entrada + .entrada { margin-top: 6pt; }
 
   /* Competências numa linha: "Programming: Python, SQL, …" */
@@ -175,6 +179,17 @@
   .destaques li + li { margin-top: 1pt; }
   .entrada .destaques { margin-top: 2pt; }
   .cv__seccao, .cv__seccao + .cv__seccao, .cv__lateral .cv__seccao { margin-top: 8pt; }
+
+  /* Contactos logo abaixo do título, como num CV em papel */
+  .cv__topo { display: flex; flex-direction: column; }
+  .cv__contactos { order: 1; margin: 0 0 6pt; }
+  .cv__resumo { order: 2; }
+
+  /* Projetos: tecnologias na linha do título, poupa uma linha a cada um */
+  .projeto { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 6pt; }
+  .projeto .palavras { order: 1; }
+  .projeto .palavras::before { content: "| "; }
+  .projeto > p:not([class]) { order: 2; flex-basis: 100%; }
 
   .empresa, .entrada, .funcao, .competencia, .lista-simples li { break-inside: avoid; }
   h2, h3, h4 { break-after: avoid; }

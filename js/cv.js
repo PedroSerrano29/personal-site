@@ -122,7 +122,7 @@
 
   function projetos(lista) {
     return seccao("Projects", lista.map((p) =>
-      el("article", { class: "entrada" },
+      el("article", { class: "entrada projeto" },
         el("h3", {}, el("a", { href: p.url, rel: "noopener", text: p.name })),
         el("p", { text: p.description }),
         el("p", { class: "palavras", text: p.keywords.join(" · ") })
@@ -160,5 +160,10 @@
   );
 
   main.replaceChildren(topo(cv.basics), el("div", { class: "cv__grelha" }, principal, lateral));
+
+  // O Chrome sugere o nome do PDF a partir do título da página
+  const tituloPagina = document.title;
+  addEventListener("beforeprint", () => { document.title = "Pedro Serrano - CV"; });
+  addEventListener("afterprint", () => { document.title = tituloPagina; });
   revelar(main.querySelectorAll("[data-revelar]"));
 })();
