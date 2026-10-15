@@ -331,6 +331,8 @@ main { flex: 1 0 auto; padding-block: var(--e-7) var(--e-9); }
 }
 
 @media print {
+  /* Uma transição a meio ganha ao !important e põe o elemento no fim do PDF: desligar tudo */
+  *, *::before, *::after { transition: none !important; animation: none !important; }
   .js [data-revelar] { opacity: 1 !important; transform: none !important; }
   body::before { display: none; }
 }
