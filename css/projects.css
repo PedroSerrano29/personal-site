@@ -1,0 +1,18 @@
+/* Só a página de projetos. Os cartões vivem em base.css, porque a página inicial também os usa. */
+
+.projetos-intro { max-width: var(--largura-texto); padding-top: var(--e-5); margin-bottom: var(--e-7); }
+.projetos-intro h1 { font-size: clamp(2.4rem, 1.6rem + 3vw, 3.4rem); }
+
+#projetos .seccao { margin-top: 0; }
+#projetos .seccao + .seccao { margin-top: var(--e-8); }
+
+.seccao__titulo { display: flex; align-items: baseline; gap: var(--e-3); margin-bottom: var(--e-5); }
+.seccao__titulo h2 { margin: 0; font-size: var(--t-xl); }
+.seccao__contagem { font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--cor-texto-fraco); }
+
+/* Esqueleto enquanto carrega - só forma, sem animação */
+.esqueleto { min-height: 9rem; }
+.esqueleto .barra { display: block; background: var(--cor-superficie-2); border-radius: var(--raio-sm); height: 0.85em; }
+.esqueleto .barra--titulo { height: 1.2em; width: 55%; }
+.esqueleto .barra--texto { width: 100%; }
+.esqueleto .barra--texto-curto { width: 70%; }

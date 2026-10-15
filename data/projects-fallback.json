@@ -1,0 +1,176 @@
+{
+  "generatedAt": "2026-10-15",
+  "source": "api.github.com/users/PedroSerrano29/repos",
+  "repos": [
+    {
+      "name": "luxury_wheels",
+      "description": "Vehicle-rental platform: a Flask REST API (SQLAlchemy, JWT auth, pytest) holds every business rule; a vanilla JavaScript front end only consumes it. Final project of my Python course, built and defended.",
+      "html_url": "https://github.com/PedroSerrano29/luxury_wheels",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "flask",
+        "javascript",
+        "jwt",
+        "pytest",
+        "python",
+        "rest-api",
+        "sqlalchemy",
+        "sqlite"
+      ],
+      "updated_at": "2026-10-15T04:47:59Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "deep-learning-specialization",
+      "description": "Deep Learning specialization coursework in TensorFlow/Keras and scikit-learn. Headline: a hand-built 422K-parameter CNN matches a pre-trained ResNet50 56x its size on Fashion-MNIST (92.6% vs 92.1%).",
+      "html_url": "https://github.com/PedroSerrano29/deep-learning-specialization",
+      "homepage": null,
+      "language": "Jupyter Notebook",
+      "topics": [
+        "cnn",
+        "computer-vision",
+        "deep-learning",
+        "fashion-mnist",
+        "jupyter-notebook",
+        "keras",
+        "machine-learning",
+        "scikit-learn",
+        "tensorflow"
+      ],
+      "updated_at": "2026-10-15T04:47:54Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "stepdub",
+      "description": "Record what you do on your computer and get readable Python that does it again",
+      "html_url": "https://github.com/PedroSerrano29/stepdub",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "codegen",
+        "macro-recorder",
+        "playwright",
+        "python",
+        "rpa"
+      ],
+      "updated_at": "2026-09-21T07:39:38Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "PredictMachineFailure_DL",
+      "description": "Construir um processo de aprendizagem de tipo incremental utilizando o seguinte dataset de Kaggle: https://www.kaggle.com/c/machine-failure-prediction/data",
+      "html_url": "https://github.com/PedroSerrano29/PredictMachineFailure_DL",
+      "homepage": null,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2025-09-14T15:48:04Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "Task-Manager-API",
+      "description": "Task Manager API (Python + Flask)",
+      "html_url": "https://github.com/PedroSerrano29/Task-Manager-API",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "updated_at": "2025-09-01T12:27:31Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "Cardiotocography_DL",
+      "description": "Construir um modelo de aprendizagem supervisionado, com o objetivo de aprender como este tipo de algoritmos funcionam.",
+      "html_url": "https://github.com/PedroSerrano29/Cardiotocography_DL",
+      "homepage": null,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2025-08-28T09:44:52Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "FlowerType_DL",
+      "description": "Predict Flower type using K-means",
+      "html_url": "https://github.com/PedroSerrano29/FlowerType_DL",
+      "homepage": null,
+      "language": "Jupyter Notebook",
+      "topics": [],
+      "updated_at": "2025-08-03T17:33:14Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "personal-site",
+      "description": "My project website",
+      "html_url": "https://github.com/PedroSerrano29/personal-site",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "updated_at": "2025-07-20T14:39:32Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "Gestor_de_Tarefas",
+      "description": null,
+      "html_url": "https://github.com/PedroSerrano29/Gestor_de_Tarefas",
+      "homepage": null,
+      "language": "HTML",
+      "topics": [],
+      "updated_at": "2025-06-27T17:37:46Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "Rendering",
+      "description": "Python script to improve the quality of an image",
+      "html_url": "https://github.com/PedroSerrano29/Rendering",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "updated_at": "2025-06-23T14:58:44Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "UIO_ScrapRate_PT",
+      "description": "Project to check if a batch of vehicle registrations are Cancelled in Portuguese market",
+      "html_url": "https://github.com/PedroSerrano29/UIO_ScrapRate_PT",
+      "homepage": null,
+      "language": "Python",
+      "topics": [],
+      "updated_at": "2025-04-15T14:14:36Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
+    {
+      "name": "1Zip-2-Many",
+      "description": "Python script to distribute PDF from a zip file to many",
+      "html_url": "https://github.com/PedroSerrano29/1Zip-2-Many",
+      "homepage": null,
+      "language": null,
+      "topics": [],
+      "updated_at": "2025-03-26T15:29:32Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+/* Só a página do CV: ecrã em duas colunas, impressão em uma (ADR-008). */
+
+.so-impressao { display: none; }
+
+/* ---------- Topo ---------- */
+
+.cv__topo { max-width: 50rem; padding-top: var(--e-5); }
+.cv__topo h1 { font-size: clamp(2.4rem, 1.6rem + 3vw, 3.4rem); margin-bottom: var(--e-3); }
+.cv__titulo { font-family: var(--fonte-mono); font-size: var(--t-sm); color: var(--cor-marca-forte); margin-bottom: var(--e-5); }
+.cv__resumo { font-size: var(--t-lg); color: var(--cor-texto-suave); }
+
+.cv__contactos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2) var(--e-5);
+  list-style: none;
+  margin: var(--e-5) 0 0;
+  padding: 0;
+  font-family: var(--fonte-mono);
+  font-size: var(--t-xs);
+  color: var(--cor-texto-suave);
+}
+.cv__contactos a { color: var(--cor-texto-suave); }
+.cv__contactos a:hover { color: var(--cor-marca-forte); }
+
+.cv__acoes { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-3) var(--e-4); margin-top: var(--e-6); }
+.cv__dica { font-size: var(--t-xs); color: var(--cor-texto-fraco); }
+
+/* ---------- Grelha e secções ---------- */
+
+.cv__grelha { display: grid; gap: var(--e-8); margin-top: var(--e-8); }
+@media (min-width: 64rem) {
+  .cv__grelha { grid-template-columns: minmax(0, 1fr) 19rem; gap: var(--e-9); }
+}
+
+.cv__seccao + .cv__seccao { margin-top: var(--e-8); }
+.cv__seccao h2 { font-size: var(--t-xl); margin-bottom: var(--e-5); }
+.cv__seccao h2::before { content: "// "; font-family: var(--fonte-mono); font-size: 0.7em; color: var(--cor-marca); vertical-align: 0.15em; }
+
+/* ---------- Experiência: linha do tempo ---------- */
+
+.empresa + .empresa { margin-top: var(--e-7); }
+.empresa__topo h3 { margin-bottom: var(--e-1); }
+.empresa__meta, .funcao__datas, .entrada__meta, .entrada__datas {
+  margin: 0;
+  font-family: var(--fonte-mono);
+  font-size: var(--t-xs);
+  color: var(--cor-texto-fraco);
+}
+
+.funcoes {
+  list-style: none;
+  margin: var(--e-4) 0 0 0.3rem;
+  padding: 0;
+  border-left: 1px solid var(--cor-borda-forte);
+}
+.funcao { position: relative; padding: 0 0 var(--e-5) var(--e-5); }
+.funcao:last-child { padding-bottom: 0; }
+/* Ponto na linha do tempo */
+.funcao::before {
+  content: "";
+  position: absolute;
+  left: calc(-0.3rem - 1px);
+  top: 0.45rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--cor-fundo);
+  border: 2px solid var(--cor-marca);
+}
+.funcao:first-child::before { background: var(--cor-marca); box-shadow: 0 0 0 4px var(--cor-marca-suave); }
+.funcao h4 { margin: 0; font-size: var(--t-base); font-weight: 650; }
+.funcao__datas { margin-bottom: var(--e-2); }
+.funcao > p:not(.funcao__datas) { font-size: var(--t-sm); color: var(--cor-texto-suave); margin-bottom: var(--e-2); }
+
+.destaques { margin: 0; padding: 0; list-style: none; font-size: var(--t-sm); }
+.destaques li { position: relative; padding-left: var(--e-5); }
+.destaques li + li { margin-top: var(--e-2); }
+.destaques li::before { content: "▹"; position: absolute; left: 0.2rem; color: var(--cor-marca); }
+
+/* ---------- Formação e projetos ---------- */
+
+.entrada + .entrada { margin-top: var(--e-5); }
+.entrada h3 { margin-bottom: var(--e-1); }
+.entrada h3 a { color: var(--cor-texto); text-decoration: none; }
+.entrada h3 a:hover { color: var(--cor-marca-forte); }
+.entrada > p:not([class]) { font-size: var(--t-sm); color: var(--cor-texto-suave); margin: var(--e-2) 0; }
+.entrada .destaques { margin-top: var(--e-3); }
+.palavras { margin: 0; font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--cor-marca); }
+
+/* ---------- Coluna lateral ---------- */
+
+.cv__lateral .cv__seccao h2 { font-size: var(--t-lg); }
+.competencia + .competencia { margin-top: var(--e-4); }
+.competencia h3 { font-size: var(--t-xs); font-family: var(--fonte-mono); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--cor-texto-fraco); margin-bottom: var(--e-2); }
+.lista-simples { list-style: none; margin: 0; padding: 0; font-size: var(--t-sm); }
+.lista-simples li + li { margin-top: var(--e-3); }
+.lista-simples strong { font-weight: 600; }
+
+/* ---------- Bloco base (sem JavaScript) ---------- */
+
+.cv-base h2 { font-size: var(--t-xl); margin-top: var(--e-7); }
+.cv-base ul { padding-left: var(--e-5); color: var(--cor-texto-suave); }
+
+/* ---------- Impressão / PDF: pobre de propósito, para os ATS ---------- */
+
+@media print {
+  @page { size: A4; margin: 1.5cm; }
+
+  :root { color-scheme: light; }
+  html, body { background: #fff !important; color: #111 !important; }
+  body { display: block; font-size: 10.5pt; line-height: 1.45; }
+
+  .cabecalho, .rodape, .skip-link, .cv__acoes, .rotulo, .aviso { display: none !important; }
+  main { padding: 0; }
+  .container { max-width: none; padding: 0; }
+  a { color: #111 !important; text-decoration: none; }
+
+  h1, h2, h3, h4 { color: #000; }
+  .cv__topo { padding: 0; max-width: none; }
+  .cv__topo h1 { font-size: 20pt; margin: 0 0 2pt; }
+  .cv__titulo { font-family: inherit; font-size: 11pt; font-weight: 600; color: #111; margin: 0 0 6pt; }
+  .cv__resumo { font-size: 10.5pt; color: #222; margin: 0; }
+  .cv__contactos { display: block; margin: 6pt 0 0; font-family: inherit; font-size: 10pt; color: #222; }
+  .cv__contactos li { display: inline; }
+  .cv__contactos li + li::before { content: " · "; }
+  .so-impressao { display: inline; }
+
+  .cv__grelha { display: block; margin: 0; }
+  .cv__seccao, .cv__seccao + .cv__seccao { margin-top: 12pt; }
+  .cv__seccao h2, .cv__lateral .cv__seccao h2 {
+    font-size: 11.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #999;
+    padding-bottom: 2pt;
+    margin: 0 0 4pt;
+  }
+  .cv__seccao h2::before { content: none; }
+  h3 { font-size: 10.5pt; margin: 0; }
+  h4 { font-size: 10.5pt; }
+
+  .empresa__meta, .funcao__datas, .entrada__meta, .entrada__datas, .palavras, .texto-suave {
+    font-family: inherit; font-size: 9.5pt; color: #444 !important;
+  }
+  .empresa + .empresa { margin-top: 6pt; }
+  .funcoes { border: 0; margin: 2pt 0 0; }
+  .funcao { padding: 0 0 4pt; }
+  .funcao::before { display: none; }
+  .funcao > p:not(.funcao__datas), .entrada > p:not([class]) { color: #222; font-size: 10pt; margin: 2pt 0; }
+  .destaques { font-size: 10pt; }
+  .destaques li { padding-left: 10pt; }
+  .destaques li::before { content: "•"; color: #111; left: 0; }
+  .entrada + .entrada { margin-top: 6pt; }
+
+  /* Competências numa linha: "Programming: Python, SQL, …" */
+  .competencia + .competencia { margin-top: 2pt; }
+  .competencia h3 { display: inline; font-family: inherit; font-size: 10pt; font-weight: 600; text-transform: none; letter-spacing: 0; color: #111; }
+  .competencia h3::after { content: ": "; }
+  .competencia .etiquetas { display: inline; }
+  .competencia .etiqueta { display: inline; background: none; color: #222; padding: 0; font-family: inherit; font-size: 10pt; white-space: normal; }
+  .competencia .etiqueta + .etiqueta::before { content: ", "; }
+  .lista-simples { font-size: 10pt; }
+  .lista-simples li + li { margin-top: 2pt; }
+
+  /* Mais específico do que as regras de ecrã, e mais apertado: tem de caber em 2 páginas */
+  body { font-size: 10pt; line-height: 1.3; }
+  .lista-simples--linha li { display: inline; }
+  .lista-simples--linha li + li::before { content: "; "; }
+  .empresa__topo h3, .entrada h3 { font-size: 11pt; margin: 0; }
+  .funcao h4 { font-size: 10.5pt; }
+  .funcoes { margin-top: 2pt; }
+  .funcao__datas { margin-bottom: 1pt; }
+  .funcao > p:not(.funcao__datas), .entrada > p:not([class]) { font-size: 10pt; margin: 1pt 0; }
+  .destaques li + li { margin-top: 1pt; }
+  .entrada .destaques { margin-top: 2pt; }
+  .cv__seccao, .cv__seccao + .cv__seccao, .cv__lateral .cv__seccao { margin-top: 8pt; }
+
+  .empresa, .entrada, .funcao, .competencia, .lista-simples li { break-inside: avoid; }
+  h2, h3, h4 { break-after: avoid; }
+}

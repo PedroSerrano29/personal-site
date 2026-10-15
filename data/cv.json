@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Pedro Serrano",
+    "label": "Tech professional specializing in artificial intelligence",
+    "email": "pedrofcserrano@gmail.com",
+    "url": "https://pedroserrano29.github.io/personal-site/",
+    "summary": "Tech professional specializing in artificial intelligence, with an MSc in Mechanical Engineering and automotive aftersales experience since 2013. I'm Parts & Accessories Manager and Team Leader at Astara Portugal, covering six brands, and I write the Python and SQL that automates our reporting — data extraction that took about six hours per brand now takes under one hour for all brands combined. My specialization in AI and deep learning (TensorFlow, Keras) is in progress. Interested in work where operational knowledge, automation and AI meet.",
+    "location": {
+      "city": "Sintra",
+      "region": "Lisbon",
+      "countryCode": "PT"
+    },
+    "profiles": [
+      { "network": "LinkedIn", "username": "pedrofcserrano", "url": "https://www.linkedin.com/in/pedrofcserrano" },
+      { "network": "GitHub", "username": "PedroSerrano29", "url": "https://github.com/PedroSerrano29" }
+    ]
+  },
+  "work": [
+    {
+      "name": "Astara Portugal",
+      "position": "Parts & Accessories Manager",
+      "location": "Lisbon, Portugal",
+      "startDate": "2022-12",
+      "summary": "Manage the parts and accessories department for Kia, Mitsubishi Motors, Fuso, Isuzu, Maxus and KGM in Portugal: inventory, OEM and dealer relations, sales and planning.",
+      "highlights": [
+        "Lead a team of three: two network parts managers and one data-analysis intern.",
+        "Automated the data extraction behind aftersales reporting with Python and SQL: from about 6 hours per brand to under 1 hour for all brands combined.",
+        "Replaced separate per-brand management reports with a single consolidated view for senior management."
+      ]
+    },
+    {
+      "name": "Astara Portugal",
+      "position": "Aftersales Controller",
+      "location": "Lisbon, Portugal",
+      "startDate": "2022-04",
+      "endDate": "2022-12",
+      "summary": "Owned management and dealer reporting and aftersales business planning.",
+      "highlights": [
+        "Automated analysis workflows working across SAP and Salesforce data (SQL, VBA, Excel)."
+      ]
+    },
+    {
+      "name": "MBP Automóveis Portugal",
+      "position": "Aftersales Technician",
+      "location": "Lisbon, Portugal",
+      "startDate": "2015-03",
+      "endDate": "2022-04",
+      "summary": "Fleet maintenance contracts manager, technical campaigns manager and technical engineer.",
+      "highlights": [
+        "Built cost-prediction analysis for fleet maintenance (wear-and-tear and repairs) from service history, including the risk analysis used to deploy service contracts (SQL, VBA, Excel).",
+        "Worked on the company's SAP implementation."
+      ]
+    },
+    {
+      "name": "Mitsubishi Motors Portugal",
+      "position": "Aftersales Trainee",
+      "location": "Lisbon, Portugal",
+      "startDate": "2013-11",
+      "endDate": "2015-03",
+      "summary": "Trainee across technical campaigns, technical management and aftersales engineering.",
+      "highlights": [
+        "Analysed warranty repair claims data (SQL, VBA, Excel)."
+      ]
+    },
+    {
+      "name": "IDMEC — Instituto Superior Técnico",
+      "position": "Researcher",
+      "location": "Lisbon, Portugal",
+      "startDate": "2013-02",
+      "endDate": "2013-06",
+      "summary": "Research on 3D-printed bio-scaffolds.",
+      "highlights": [
+        "In charge of the bio-scaffold 3D-printing lab.",
+        "Performed static and dynamic mechanical testing of scaffolds."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Tokio School Portugal",
+      "area": "Artificial Intelligence — Python & Deep Learning (400 h)",
+      "studyType": "Professional Certificate (in progress)",
+      "startDate": "2024-12",
+      "courses": [
+        "Final project of the Python course, built and defended: Luxury Wheels — vehicle-rental web platform (Python, Flask, SQLAlchemy, vanilla JavaScript)",
+        "Deep Learning specialization, modules 1–3 published on GitHub (TensorFlow, Keras, scikit-learn)",
+        "Deep Learning final project, submitted, defense pending: Jarvis NLU — intent classification for European Portuguese (Keras, FastAPI)"
+      ]
+    },
+    {
+      "institution": "Instituto Superior Técnico",
+      "area": "Mechanical Engineering — Production",
+      "studyType": "Master's degree",
+      "startDate": "2011",
+      "endDate": "2013"
+    },
+    {
+      "institution": "Instituto Superior de Engenharia de Lisboa",
+      "area": "Mechanical Engineering",
+      "studyType": "Bachelor's degree (Licenciatura)",
+      "startDate": "2008",
+      "endDate": "2011"
+    }
+  ],
+  "certificates": [
+    { "name": "Programação: da abstração à implementação em Python", "issuer": "Instituto Superior Técnico", "date": "2025-08" },
+    { "name": "Fundamentos de Sistemas Operativos", "issuer": "Instituto Superior Técnico", "date": "2025-08" },
+    { "name": "Python Essentials 1", "issuer": "Cisco Networking Academy", "date": "2025-06" },
+    { "name": "JavaScript Foundations Professional Certificate", "issuer": "Mozilla", "date": "2024-09" },
+    { "name": "Python for Data Science Professional Certificate", "issuer": "Anaconda", "date": "2024-09" },
+    { "name": "Programming with Python Professional Certificate", "issuer": "OpenEDG Python Institute", "date": "2024-05" }
+  ],
+  "skills": [
+    { "name": "Programming", "keywords": ["Python", "SQL", "VBA", "JavaScript", "HTML", "CSS"] },
+    { "name": "Data & reporting", "keywords": ["Pandas", "Power BI", "Excel", "ETL", "Jupyter"] },
+    { "name": "Enterprise systems", "keywords": ["SAP", "Salesforce"] },
+    { "name": "Web & tooling", "keywords": ["Flask", "Git", "GitHub", "Linux"] },
+    { "name": "Machine learning", "keywords": ["TensorFlow", "Keras", "scikit-learn"] },
+    { "name": "Aftersales business", "keywords": ["Parts & inventory management", "OEM and dealer relations", "Warranty analysis", "Service contracts", "Team leadership"] }
+  ],
+  "languages": [
+    { "language": "Portuguese", "fluency": "Native" },
+    { "language": "English", "fluency": "Full professional" },
+    { "language": "Spanish", "fluency": "Limited working" }
+  ],
+  "projects": [
+    {
+      "name": "Deep Learning Specialization",
+      "description": "Coursework in TensorFlow/Keras and scikit-learn, run on a laptop CPU. A hand-built 422K-parameter CNN matches a pre-trained ResNet50 56× its size on Fashion-MNIST (92.6% vs 92.1% accuracy) and trains 16× faster.",
+      "keywords": ["TensorFlow", "Keras", "scikit-learn", "Computer vision"],
+      "url": "https://github.com/PedroSerrano29/deep-learning-specialization"
+    },
+    {
+      "name": "stepdub",
+      "description": "Records what you do on your computer and turns it into readable Python that does it again.",
+      "keywords": ["Python", "Playwright", "Automation"],
+      "url": "https://github.com/PedroSerrano29/stepdub"
+    },
+    {
+      "name": "Luxury Wheels",
+      "description": "Vehicle-rental web platform: a Flask REST API (SQLAlchemy, JWT auth, pytest) holds every business rule; a vanilla JavaScript front end only consumes it.",
+      "keywords": ["Python", "Flask", "SQLAlchemy", "JWT", "JavaScript"],
+      "url": "https://github.com/PedroSerrano29/luxury_wheels"
+    },
+    {
+      "name": "UIO_ScrapRate_PT",
+      "description": "Checks in bulk whether Portuguese vehicle registrations are active or cancelled.",
+      "keywords": ["Python", "BeautifulSoup", "Pandas", "Multithreading"],
+      "url": "https://github.com/PedroSerrano29/UIO_ScrapRate_PT"
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "União Zoófila",
+      "position": "Volunteer",
+      "startDate": "2016-10",
+      "summary": "Helping at the animal shelter."
+    }
+  ],
+  "meta": {
+    "lastModified": "2026-10-15"
+  }
+}

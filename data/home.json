@@ -1,0 +1,52 @@
+{
+  "docs": "Text for the home page. The hero is static in index.html so it reads without JavaScript; everything else is built from this file and cv.json. Every number here must be one Pedro has confirmed or that comes from his own published results.",
+  "perfil": {
+    "role": "Parts & Accessories Manager & Team Leader",
+    "specialization": "Artificial intelligence",
+    "aftersalesSince": 2013,
+    "reporting": "~6 h per brand → < 1 h, all brands",
+    "stack": ["Python", "SQL", "Power BI", "SAP"],
+    "ai": ["TensorFlow", "Keras", "scikit-learn"]
+  },
+  "numeros": [
+    {
+      "texto": "< 1 h",
+      "rotulo": "to extract the reporting data for all six brands. It used to take about 6 h per brand."
+    },
+    {
+      "valor": 6,
+      "rotulo": "automotive brands covered by the Parts & Accessories department I lead"
+    },
+    {
+      "anosDesde": "2013-11",
+      "sufixo": "+",
+      "rotulo": "years in automotive aftersales"
+    },
+    {
+      "valor": 56,
+      "sufixo": "×",
+      "rotulo": "smaller than a pre-trained ResNet50, at the same accuracy: a CNN I built by hand"
+    }
+  ],
+  "principios": [
+    {
+      "titulo": "Measure before choosing",
+      "texto": "In my deep learning final project I trained four networks from scratch and compared them with paired significance tests. The simplest one won. A bigger model is a hypothesis to test, not a default.",
+      "ligacao": { "texto": "Deep learning coursework", "href": "https://github.com/PedroSerrano29/deep-learning-specialization" }
+    },
+    {
+      "titulo": "Automate the repetitive part",
+      "texto": "Repetitive work is where automation pays first. At work, that meant the data extraction behind aftersales reporting. On my own time it became stepdub, which records what you do on screen and writes readable Python that does it again.",
+      "ligacao": { "texto": "stepdub", "href": "https://github.com/PedroSerrano29/stepdub" }
+    },
+    {
+      "titulo": "Know the operation first",
+      "texto": "Since 2013 in aftersales: warranty analysis, fleet maintenance contracts, technical campaigns, and now parts and accessories. The code serves the operation, not the other way round.",
+      "ligacao": { "texto": "Full CV", "href": "resume.html" }
+    }
+  ],
+  "fecho": {
+    "titulo": "Get in touch",
+    "texto": "I'm interested in work where operational knowledge, automation and AI meet. Email or LinkedIn is the quickest way to reach me."
+  }
+}

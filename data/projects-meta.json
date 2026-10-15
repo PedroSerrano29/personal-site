@@ -1,0 +1,125 @@
+{
+  "docs": "Curation layer on top of the GitHub API. The page lists every public repository automatically; this file only adds what the API cannot express. Any repo missing here still shows up, using its GitHub description. featured: pinned to the top, in this order. overrides: title (display name), blurb (replaces the GitHub description), demo (live link), tags (extra labels beside the GitHub topics), hidden (true to leave it out). private: repositories that are not public, written here by hand (title, blurb, tags, status). Private repositories are never read automatically: one only appears if it is written here. When it becomes public, the API lists it and this entry stops being used as a private card.",
+  "featured": [
+    "deep-learning-specialization",
+    "jarvis-nlu",
+    "luxury_wheels",
+    "stepdub"
+  ],
+  "overrides": {
+    "luxury_wheels": {
+      "title": "Luxury Wheels",
+      "blurb": "Final project of my Python course, built and defended: a vehicle-rental platform. A Flask REST API with SQLAlchemy and JWT auth holds every business rule; the vanilla JavaScript front end only consumes it.",
+      "tags": [
+        "flask",
+        "sqlalchemy",
+        "rest-api",
+        "jwt"
+      ]
+    },
+    "stepdub": {
+      "title": "stepdub"
+    },
+    "Task-Manager-API": {
+      "title": "Task Manager API",
+      "blurb": "REST API for managing tasks, in Python and Flask."
+    },
+    "personal-site": {
+      "title": "This site",
+      "blurb": "Static HTML, CSS and vanilla JavaScript on GitHub Pages — no framework, no build step. The projects page you are reading builds itself from the GitHub API.",
+      "demo": "https://pedroserrano29.github.io/personal-site/",
+      "tags": [
+        "html",
+        "css",
+        "javascript",
+        "github-pages"
+      ]
+    },
+    "PredictMachineFailure_DL": {
+      "title": "Machine Failure Prediction",
+      "blurb": "Moved into the Deep Learning Specialization repository (module 1).",
+      "tags": [
+        "scikit-learn",
+        "pandas",
+        "coursework"
+      ],
+      "hidden": true
+    },
+    "Cardiotocography_DL": {
+      "title": "Cardiotocography Classifier",
+      "blurb": "Moved into the Deep Learning Specialization repository (module 1).",
+      "tags": [
+        "scikit-learn",
+        "pandas",
+        "coursework"
+      ],
+      "hidden": true
+    },
+    "FlowerType_DL": {
+      "title": "Flower Type Clustering",
+      "blurb": "Moved into the Deep Learning Specialization repository (module 1).",
+      "tags": [
+        "scikit-learn",
+        "k-means",
+        "coursework"
+      ],
+      "hidden": true
+    },
+    "UIO_ScrapRate_PT": {
+      "title": "Vehicle Registration Checker",
+      "blurb": "Checks in bulk whether Portuguese vehicle registrations are active or cancelled. BeautifulSoup, Pandas and multithreading.",
+      "tags": [
+        "beautifulsoup",
+        "pandas",
+        "multithreading"
+      ]
+    },
+    "Gestor_de_Tarefas": {
+      "title": "Task Manager (web)",
+      "blurb": "Task-management web app from my Python coursework: Flask with SQLAlchemy, HTML and CSS.",
+      "tags": [
+        "flask",
+        "sqlalchemy",
+        "coursework"
+      ]
+    },
+    "Rendering": {
+      "title": "Image Rendering",
+      "blurb": "Script that improves the quality of an image, using OpenCV and NumPy.",
+      "tags": [
+        "opencv",
+        "numpy"
+      ]
+    },
+    "1Zip-2-Many": {
+      "title": "1Zip-2-Many",
+      "blurb": "Script that splits a zip of PDFs and distributes each file to its recipient.",
+      "hidden": true
+    },
+    "deep-learning-specialization": {
+      "title": "Deep Learning Specialization",
+      "blurb": "Coursework for my Deep Learning specialization, on a laptop CPU. The headline: a 422K-parameter CNN I built by hand matches a pre-trained ResNet50 that is 56x larger and takes 16x longer to train.",
+      "tags": [
+        "tensorflow",
+        "keras",
+        "scikit-learn",
+        "computer-vision",
+        "cnn"
+      ]
+    }
+  },
+  "private": {
+    "jarvis-nlu": {
+      "title": "Jarvis NLU",
+      "blurb": "Final project of my Deep Learning specialization: understanding what a European-Portuguese voice assistant is being asked, across 60 intents. Four networks trained from scratch and compared with paired significance tests. The simplest won, and nothing more complex did significantly better: 83% accuracy at 7 ms per sentence.",
+      "tags": [
+        "keras",
+        "nlp",
+        "fastapi",
+        "transformer",
+        "lstm"
+      ],
+      "status": "Submitted · defense pending"
+    }
+  }
+}

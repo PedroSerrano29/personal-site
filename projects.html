@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0a0c0b">
+    <title>Projects · Pedro Serrano</title>
+    <meta name="description" content="Pedro Serrano's projects: machine learning, automation and web, listed straight from the GitHub API.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pedroserrano29.github.io/personal-site/projects.html">
+    <meta property="og:title" content="Projects · Pedro Serrano">
+    <meta property="og:description" content="Machine learning, automation and web projects, listed straight from GitHub.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/projects.css">
+  </head>
+  <body>
+    <script src="js/layout.js"></script>
+
+    <main id="conteudo" class="container">
+      <div class="projetos-intro">
+        <p class="rotulo" data-revelar>// projects</p>
+        <h1 data-revelar style="--atraso: 80ms">Projects</h1>
+        <p class="texto-suave" data-revelar style="--atraso: 160ms">
+          Everything I have published on GitHub. The list builds itself from the GitHub API,
+          so a new repository shows up on its own. Work that is not public yet is listed too,
+          marked as private.
+        </p>
+      </div>
+
+      <div id="avisos"></div>
+
+      <noscript>
+        <div class="aviso">
+          This page needs JavaScript to read the project list from GitHub. Everything is at
+          <a href="https://github.com/PedroSerrano29?tab=repositories">github.com/PedroSerrano29</a>.
+        </div>
+      </noscript>
+
+      <div id="projetos">
+        <ul class="grelha" aria-hidden="true">
+          <li class="cartao esqueleto"><span class="barra barra--titulo"></span><span class="barra barra--texto"></span><span class="barra barra--texto-curto"></span></li>
+          <li class="cartao esqueleto"><span class="barra barra--titulo"></span><span class="barra barra--texto"></span><span class="barra barra--texto-curto"></span></li>
+          <li class="cartao esqueleto"><span class="barra barra--titulo"></span><span class="barra barra--texto"></span><span class="barra barra--texto-curto"></span></li>
+        </ul>
+      </div>
+      <p class="visualmente-oculto" role="status" aria-live="polite" id="estado">Loading projects…</p>
+    </main>
+
+    <script src="js/projects.js"></script>
+  </body>
+</html>

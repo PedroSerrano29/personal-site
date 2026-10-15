@@ -1,0 +1,68 @@
+/* Tokens: o único sítio onde se define uma cor, um espaço ou um tamanho de letra.
+   Tema escuro por decisão do Pedro (ADR-015). A impressão do CV tem cores próprias em cv.css. */
+
+:root {
+  color-scheme: dark;
+
+  /* Superfícies */
+  --cor-fundo: #0a0c0b;
+  --cor-superficie: #111413;
+  --cor-superficie-2: #171b19;
+  --cor-borda: #222826;
+  --cor-borda-forte: #303833;
+  --cor-grelha: rgb(255 255 255 / 0.035);
+
+  /* Texto - contraste AA sobre o fundo: 15:1, 7.5:1 e 5.2:1 */
+  --cor-texto: #e7ebe9;
+  --cor-texto-suave: #9aa39f;
+  --cor-texto-fraco: #7d8682;
+
+  /* Marca - o verde do site antigo, mais claro para ler bem no escuro */
+  --cor-marca: #4fd18b;
+  --cor-marca-forte: #86e4b2;
+  --cor-marca-suave: rgb(79 209 139 / 0.1);
+  --cor-marca-brilho: rgb(79 209 139 / 0.14);
+  --cor-sobre-marca: #04110a;
+  --cor-link: var(--cor-marca-forte);
+  --cor-sponsor: #db61a2;
+
+  /* Sintaxe do cartão de código da página inicial */
+  --cor-codigo-chave: #8cc8ff;
+  --cor-codigo-texto: #e8c37e;
+  --cor-codigo-numero: #f0a3c0;
+
+  /* Espaços - passos de 4px */
+  --e-1: 0.25rem;
+  --e-2: 0.5rem;
+  --e-3: 0.75rem;
+  --e-4: 1rem;
+  --e-5: 1.5rem;
+  --e-6: 2rem;
+  --e-7: 3rem;
+  --e-8: 4rem;
+  --e-9: 6rem;
+
+  /* Tipografia - fontes do sistema (ADR-011) */
+  --fonte: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fonte-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --t-xs: 0.78rem;
+  --t-sm: 0.88rem;
+  --t-base: 1rem;
+  --t-lg: 1.15rem;
+  --t-xl: 1.5rem;
+  --t-2xl: clamp(1.75rem, 1.3rem + 1.8vw, 2.4rem);
+  --t-3xl: clamp(2.6rem, 1.5rem + 4.6vw, 4.4rem);
+
+  /* Formas e profundidade */
+  --raio: 12px;
+  --raio-sm: 8px;
+  --raio-pill: 999px;
+  --sombra: 0 1px 0 rgb(255 255 255 / 0.03) inset, 0 10px 30px rgb(0 0 0 / 0.35);
+
+  /* Medidas e movimento */
+  --largura: 72rem;
+  --largura-texto: 42rem;
+  --altura-cabecalho: 4rem;
+  --transicao: 180ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  --entrada: 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
