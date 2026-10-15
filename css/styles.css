@@ -356,3 +356,27 @@ footer {
         size: A4 portrait;
     }
 }
+
+/* SPONSOR - mesma altura dos icones sociais (32px), discreto no rodape */
+/* Icones e botao como blocos: sem o espaco da linha de base, cada item tem 32px certos */
+.socials li { vertical-align: middle; }
+.socials img { display: block; }
+.socials .sponsor {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    color: #d3d4d6;
+    font-size: 1.4rem; /* o html deste site tem 10px de base */
+    text-decoration: none;
+}
+.socials .sponsor svg { color: #db61a2; }
+.socials .sponsor:hover { border-color: #db61a2; color: #f6f6f6; }
+.socials .sponsor:focus-visible { outline: 2px solid #db61a2; outline-offset: 2px; }
+@media print {
+    /* .socials a[href] (mais acima) e mais especifico do que .socials .sponsor */
+    .socials li:has(> .sponsor), .socials a.sponsor { display: none; }
+}
