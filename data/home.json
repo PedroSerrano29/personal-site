@@ -4,14 +4,17 @@
     "role": "Parts & Accessories Manager & Team Leader",
     "specialization": "Artificial intelligence",
     "aftersalesSince": 2013,
-    "reporting": "~6 h per brand → < 1 h, all brands",
-    "stack": ["Python", "SQL", "Power BI", "SAP"],
+    "reporting": "6 h per brand → 5 min, all brands",
+    "forecasting": "ML tournament, best model per brand",
+    "building": "Aftersales web panel (in development)",
+    "stack": ["Python", "Flask", "JavaScript", "SQL"],
+    "tools": ["Power BI", "SAP"],
     "ai": ["TensorFlow", "Keras", "scikit-learn"]
   },
   "numeros": [
     {
-      "texto": "< 1 h",
-      "rotulo": "to extract the reporting data for all six brands. It used to take about 6 h per brand."
+      "texto": "5 min",
+      "rotulo": "to run the reporting for all brands. It used to take about 6 h per brand."
     },
     {
       "valor": 6,
@@ -31,12 +34,12 @@
   "principios": [
     {
       "titulo": "Measure before choosing",
-      "texto": "In my deep learning final project I trained four networks from scratch and compared them with paired significance tests. The simplest one won. A bigger model is a hypothesis to test, not a default.",
+      "texto": "In my deep learning final project I trained four networks from scratch and compared them with paired significance tests. The simplest one won. At work I apply the same rule to forecasting: machine learning models compete for each brand and the best forecast wins. A bigger model is a hypothesis to test, not a default.",
       "ligacao": { "texto": "Deep learning coursework", "href": "https://github.com/PedroSerrano29/deep-learning-specialization" }
     },
     {
       "titulo": "Automate the repetitive part",
-      "texto": "Repetitive work is where automation pays first. At work, that meant the data extraction behind aftersales reporting. On my own time it became stepdub, which records what you do on screen and writes readable Python that does it again.",
+      "texto": "Repetitive work is where automation pays first. At work, reporting that took about 6 h per brand now takes 5 minutes for all of them, and I'm building it into a web panel for the whole department. On my own time the same idea became stepdub, which records what you do on screen and writes readable Python that does it again.",
       "ligacao": { "texto": "stepdub", "href": "https://github.com/PedroSerrano29/stepdub" }
     },
     {

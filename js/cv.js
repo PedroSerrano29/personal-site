@@ -55,7 +55,6 @@
       el("p", { class: "rotulo", text: "// curriculum vitae" }),
       el("h1", { text: b.name }),
       el("p", { class: "cv__titulo", text: b.label }),
-      el("p", { class: "cv__resumo", text: b.summary }),
       el("ul", { class: "cv__contactos" },
         el("li", { text: `${b.location.city}, ${pais}` }),
         el("li", {}, el("a", { href: `mailto:${b.email}`, text: b.email })),
@@ -63,6 +62,7 @@
         el("li", {}, el("a", { href: perfil("GitHub").url, rel: "noopener", text: semProtocolo(perfil("GitHub").url) })),
         el("li", { class: "so-impressao" }, el("a", { href: b.url, text: site }))
       ),
+      el("p", { class: "cv__resumo", text: b.summary }),
       el("p", { class: "cv__acoes" },
         el("button", { class: "botao", type: "button", onclick: () => print() }, icone("descarregar"), "Download PDF"),
         el("span", { class: "cv__dica", text: "Opens the print dialog: choose “Save as PDF”." })

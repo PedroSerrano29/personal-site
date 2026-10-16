@@ -14,7 +14,7 @@
   flex-wrap: wrap;
   gap: var(--e-2) var(--e-5);
   list-style: none;
-  margin: var(--e-5) 0 0;
+  margin: 0 0 var(--e-5);
   padding: 0;
   font-family: var(--fonte-mono);
   font-size: var(--t-xs);
@@ -121,7 +121,7 @@
   .cv__topo h1 { font-size: 20pt; margin: 0 0 2pt; }
   .cv__titulo { font-family: inherit; font-size: 11pt; font-weight: 600; color: #111; margin: 0 0 6pt; }
   .cv__resumo { font-size: 10.5pt; color: #222; margin: 0; }
-  .cv__contactos { display: block; margin: 6pt 0 0; font-family: inherit; font-size: 10pt; color: #222; }
+  .cv__contactos { display: block; margin: 0 0 6pt; font-family: inherit; font-size: 10pt; color: #222; }
   .cv__contactos li { display: inline; }
   .cv__contactos li + li::before { content: " · "; }
   .so-impressao { display: inline; }
@@ -179,11 +179,6 @@
   .destaques li + li { margin-top: 1pt; }
   .entrada .destaques { margin-top: 2pt; }
   .cv__seccao, .cv__seccao + .cv__seccao, .cv__lateral .cv__seccao { margin-top: 8pt; }
-
-  /* Contactos logo abaixo do título, como num CV em papel */
-  .cv__topo { display: flex; flex-direction: column; }
-  .cv__contactos { order: 1; margin: 0 0 6pt; }
-  .cv__resumo { order: 2; }
 
   /* Projetos: tecnologias na linha do título, poupa uma linha a cada um */
   .projeto { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 6pt; }

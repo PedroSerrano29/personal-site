@@ -1,6 +1,7 @@
 {
   "docs": "Curation layer on top of the GitHub API. The page lists every public repository automatically; this file only adds what the API cannot express. Any repo missing here still shows up, using its GitHub description. featured: pinned to the top, in this order. overrides: title (display name), blurb (replaces the GitHub description), demo (live link), tags (extra labels beside the GitHub topics), hidden (true to leave it out). private: repositories that are not public, written here by hand (title, blurb, tags, status). Private repositories are never read automatically: one only appears if it is written here. When it becomes public, the API lists it and this entry stops being used as a private card.",
   "featured": [
+    "aftersales-scorecard",
     "deep-learning-specialization",
     "jarvis-nlu",
     "luxury_wheels",
@@ -109,6 +110,18 @@
     }
   },
   "private": {
+    "aftersales-scorecard": {
+      "title": "Aftersales web panel",
+      "blurb": "A web app, in development at work, that gathers and controls the aftersales department's information in one place. It automates the service-level evaluation and proposes stock optimizations for the stockholding brands, and runs a machine learning tournament in which models compete to produce the best forecast for each brand. The Power BI reports are already in use.",
+      "tags": [
+        "python",
+        "flask",
+        "javascript",
+        "machine-learning",
+        "power-bi"
+      ],
+      "status": "In development · Power BI reports in use"
+    },
     "jarvis-nlu": {
       "title": "Jarvis NLU",
       "blurb": "Final project of my Deep Learning specialization: understanding what a European-Portuguese voice assistant is being asked, across 60 intents. Four networks trained from scratch and compared with paired significance tests. The simplest won, and nothing more complex did significantly better: 83% accuracy at 7 ms per sentence.",

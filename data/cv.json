@@ -5,7 +5,7 @@
     "label": "Tech professional specializing in artificial intelligence",
     "email": "pedrofcserrano@gmail.com",
     "url": "https://pedroserrano29.github.io/personal-site/",
-    "summary": "MSc in Mechanical Engineering, in automotive aftersales since 2013. I'm Parts & Accessories Manager and Team Leader at Astara Portugal, covering six brands, and I write the Python and SQL that automates our reporting — data extraction that took about six hours per brand now takes under one hour for all brands combined. My specialization in AI and deep learning (TensorFlow, Keras) is in progress. Interested in work where operational knowledge, automation and AI meet.",
+    "summary": "MSc in Mechanical Engineering, in automotive aftersales since 2013. As Parts & Accessories Manager and Team Leader at Astara Portugal, covering six brands, I build the department's analytics in Python and SQL. Reporting that took about six hours per brand now takes five minutes for all of them, an automated service-level analysis proposes stock optimizations, and machine learning models compete to produce the best forecast for each brand. It is all being brought together in an aftersales web panel, in development. My specialization in AI and deep learning (TensorFlow, Keras) is in progress. Interested in work where operational knowledge, automation and AI meet.",
     "location": {
       "city": "Sintra",
       "region": "Lisbon",
@@ -25,7 +25,9 @@
       "summary": "Manage the parts and accessories department for Kia, Mitsubishi Motors, Fuso, Isuzu, Maxus and KGM in Portugal: inventory, OEM and dealer relations, sales and planning.",
       "highlights": [
         "Lead a team of three: two network parts managers and one data-analysis intern.",
-        "Automated the data extraction behind aftersales reporting with Python and SQL: from about 6 hours per brand to under 1 hour for all brands combined.",
+        "Automated aftersales reporting with Python and SQL and am centralizing all dealer reporting: from about 6 hours per brand to 5 minutes for all brands.",
+        "Automated the service-level evaluation, which now proposes stock optimizations for the stockholding brands.",
+        "Developing an aftersales web panel (Python, Flask, JavaScript) that gathers and controls the department's information in one place, including a machine learning tournament in which models compete to produce the best forecast for each brand. The Power BI reports are already in use.",
         "Replaced separate per-brand management reports with a single consolidated view for senior management."
       ]
     },
@@ -116,8 +118,8 @@
     { "name": "Data & reporting", "keywords": ["Pandas", "Power BI", "Excel", "ETL", "Jupyter"] },
     { "name": "Enterprise systems", "keywords": ["SAP", "Salesforce"] },
     { "name": "Web & tooling", "keywords": ["Flask", "Git", "GitHub", "Linux"] },
-    { "name": "Machine learning", "keywords": ["TensorFlow", "Keras", "scikit-learn"] },
-    { "name": "Aftersales business", "keywords": ["Parts & inventory management", "OEM and dealer relations", "Warranty analysis", "Service contracts", "Team leadership"] }
+    { "name": "Machine learning", "keywords": ["TensorFlow", "Keras", "scikit-learn", "Forecasting"] },
+    { "name": "Aftersales business", "keywords": ["Parts & inventory management", "OEM and dealer relations", "Warranty analysis", "Service contracts", "Service-level analysis", "Stock optimization", "Team leadership"] }
   ],
   "languages": [
     { "language": "Portuguese", "fluency": "Native" },
