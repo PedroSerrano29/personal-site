@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#2689bf">
+<title>Peixinhos Tímidos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap">
+<style>
+:root{
+  --agua:#3a9fd0;
+  --areia:#a38c63;
+  --fundo:#0f4c7a;
+  --texto:#f4fbff;
+  --texto-suave:rgba(244,251,255,.86);
+  --sombra:rgba(4,24,48,.42);
+  --borda:rgba(255,255,255,.6);
+  --acento:#ffc15e;
+  --veu-1:rgba(8,44,78,.10);
+  --veu-2:rgba(5,28,52,.62);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --agua:#2f8cbd; --areia:#8a7654; --fundo:#0b3d66;
+    --texto:#eef8ff; --texto-suave:rgba(238,248,255,.82);
+    --sombra:rgba(0,12,28,.5); --borda:rgba(255,255,255,.5);
+    --acento:#ffc15e; --veu-1:rgba(4,30,56,.18); --veu-2:rgba(2,18,36,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --agua:#2f8cbd; --areia:#8a7654; --fundo:#0b3d66;
+  --texto:#eef8ff; --texto-suave:rgba(238,248,255,.82);
+  --sombra:rgba(0,12,28,.5); --borda:rgba(255,255,255,.5);
+  --acento:#ffc15e; --veu-1:rgba(4,30,56,.18); --veu-2:rgba(2,18,36,.7);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);
+  background:linear-gradient(to bottom,var(--agua) 0 50%,var(--areia) 50% 100%)}
+body{height:100%;margin:0;overflow:hidden;background:var(--fundo);color:var(--texto);
+  font-family:"Baloo 2",ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold","Segoe UI",system-ui,sans-serif;
+  touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+  -webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+#mar{display:block;width:100%;height:100%;max-width:100%;touch-action:none}
+.inicio{position:fixed;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(10px,2.2vh,20px);text-align:center;cursor:pointer;
+  padding:calc(env(safe-area-inset-top,0px) + 20px) 22px calc(env(safe-area-inset-bottom,0px) + 20px);
+  background:radial-gradient(120% 90% at 50% 40%,var(--veu-1),var(--veu-2));
+  transition:opacity .9s ease,visibility 0s linear .9s}
+.inicio.fora{opacity:0;visibility:hidden;pointer-events:none}
+.inicio h1{margin:0;font-weight:800;font-size:clamp(38px,9.5vw,70px);line-height:.95;letter-spacing:.01em;
+  text-shadow:0 3px 0 var(--sombra),0 12px 34px var(--sombra)}
+.botao{appearance:none;-webkit-appearance:none;border:0;margin:0;padding:0;color:inherit;cursor:pointer;
+  width:clamp(118px,32vw,172px);aspect-ratio:1/1;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.62),rgba(255,255,255,.16) 42%,rgba(255,255,255,.07) 70%,rgba(255,255,255,.14));
+  box-shadow:inset 0 0 0 2px var(--borda),inset -10px -14px 26px rgba(10,70,130,.35),0 16px 44px var(--sombra);
+  animation:boiar 3.4s ease-in-out infinite}
+.botao:focus-visible{outline:3px solid var(--acento);outline-offset:6px}
+.botao svg{width:62%;height:auto;overflow:visible;filter:drop-shadow(0 5px 6px rgba(4,24,48,.35))}
+.rotulo{font-weight:700;font-size:clamp(19px,4.8vw,24px);line-height:1.2}
+.nota{margin:0;max-width:33ch;font-weight:500;font-size:clamp(14px,3.6vw,17px);line-height:1.4;color:var(--texto-suave)}
+.musica{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0 12px;max-width:36ch;
+  font-size:clamp(13px,3.4vw,15px);line-height:1.35;color:var(--texto-suave);cursor:default}
+.musica b{font-weight:700;color:var(--texto);overflow-wrap:anywhere}
+.ligacao{appearance:none;-webkit-appearance:none;border:0;background:none;margin:0;padding:10px 4px;font:inherit;
+  font-weight:700;color:var(--acento);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.ligacao:focus-visible{outline:2px solid var(--acento);outline-offset:2px;border-radius:6px}
+.dica{margin:0;max-width:36ch;font-size:clamp(12px,3.1vw,14px);line-height:1.35;color:var(--texto-suave);opacity:.85}
+.aviso{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 14px);transform:translateX(-50%);z-index:3;
+  width:max-content;max-width:min(92vw,420px);padding:10px 16px;border-radius:16px;background:rgba(5,28,52,.8);
+  color:#f4fbff;font-size:15px;line-height:1.35;text-align:center;opacity:0;transition:opacity .4s ease;pointer-events:none}
+.aviso.ver{opacity:1}
+.acordado{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none}
+@keyframes boiar{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+@media (prefers-reduced-motion:reduce){.botao{animation:none}}
+@media (max-height:520px){
+  .inicio{gap:6px}
+  .inicio h1{font-size:30px}
+  .botao{width:88px}
+  .nota{display:none}
+}
+</style>
+</head>
+<body>
+<canvas id="mar" aria-label="Fundo do mar com peixinhos"></canvas>
+
+<div class="inicio" id="inicio">
+  <h1>Peixinhos<br>Tímidos</h1>
+  <button class="botao" id="botao" type="button" aria-label="Começar">
+    <svg viewBox="0 0 120 90" aria-hidden="true">
+      <path d="M30 45 Q14 28 5 20 Q12 45 5 70 Q14 62 30 45Z" fill="#ff8f3d"/>
+      <path d="M46 18 Q62 3 80 16 Z" fill="#ff8f3d"/>
+      <ellipse cx="64" cy="45" rx="40" ry="31" fill="#ffa94f"/>
+      <ellipse cx="62" cy="58" rx="30" ry="15" fill="#fff1d8" opacity=".75"/>
+      <ellipse cx="58" cy="29" rx="22" ry="7" fill="#fff" opacity=".28"/>
+      <circle cx="82" cy="39" r="11" fill="#fff"/>
+      <circle cx="84.5" cy="40" r="6.8" fill="#1d2440"/>
+      <circle cx="82" cy="36.5" r="2.6" fill="#fff"/>
+      <ellipse cx="76" cy="54" rx="6" ry="4" fill="#ff7a93" opacity=".45"/>
+      <path d="M93 51 q4.5 4.5 9 0" fill="none" stroke="#3a2440" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <div class="rotulo">Toca para começar</div>
+  <p class="nota">Toca no ecrã ou mexe o rato: os peixinhos fogem e a música para. Com um bocadinho de calma, voltam um a um e a música recomeça devagarinho, onde tinha ficado.</p>
+  <div class="musica" id="caixaMusica">
+    <span>Música: <b id="nomeMusica">canção de embalar do jogo</b></span>
+    <button type="button" class="ligacao" id="escolher">Escolher um ficheiro de música</button>
+    <button type="button" class="ligacao" id="usarJogo" hidden>Usar a canção do jogo</button>
+    <input type="file" id="ficheiro" accept="audio/*" hidden>
+  </div>
+  <p class="dica">Sem som? Tira o telemóvel do modo silencioso e sobe o volume.</p>
+</div>
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+'use strict';
+
+/* ===== Ajustes fáceis de mudar ===== */
+const AJUSTES = {
+  esperaAntesDeVoltar: 1.5,      // segundos sem toques até começarem a voltar
+  intervaloEntreRegressos: 2.0,  // segundos entre cada bicho que volta
+  andamento: 64,                 // batidas por minuto da canção de embalar
+  volumeMar: 0.2,                // som da água de fundo (0 a 1)
+  volumeGeral: 1.7               // volume final (sobe se ainda estiver baixo)
+};
+
+const TAU = Math.PI * 2;
+const rand = (a, b) => a + Math.random() * (b - a);
+const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+const escolher = arr => arr[Math.floor(Math.random() * arr.length)];
+const agoraSeg = () => performance.now() / 1000;
+const normAng = a => { a = (a + Math.PI) % TAU; if (a < 0) a += TAU; return a - Math.PI; };
+const coresCache = {};
+function rgba(hex, a) {
+  let c = coresCache[hex];
+  if (!c) { const n = parseInt(hex.slice(1), 16); c = coresCache[hex] = [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+  return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + clamp(a, 0, 1).toFixed(3) + ')';
+}
+function semErro(p) { if (p && typeof p.catch === 'function') p.catch(() => {}); }
+const EH_IOS = (() => {
+  try { return /iP(hone|ad|od)/.test(navigator.userAgent || '') || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); }
+  catch (e) { return false; }
+})();
+
+/* ================= SOM ================= */
+const Som = (() => {
+  let ctx = null, master, musica, filtro, retorno, reverb, sfx, filtroAcordes, ruido, desbloqueio = null;
+  let ganhoFaixa = null, analisador = null, amostras = null;
+  const camadas = [], alvo = [];
+  // camadas, pela ordem em que voltam: 0 melodia · 1 harpa · 2 baixo · 3 acordes · 4 flauta · 5 sininhos
+  const VOL = [1, 0.85, 0.9, 0.8, 0.75, 0.6];
+  const VOL_GERAL = [0.7, 0.72, 0.8, 0.86, 0.92, 0.96, 1];  // a música ganha corpo à medida que voltam mais bichos
+  const VOL_FAIXA = [0, 0.4, 0.55, 0.68, 0.8, 0.9, 1];
+  const TEMPO = 60 / AJUSTES.andamento, COMPASSO = TEMPO * 3;
+  let eventos = [], notas = [], inicios = [];
+  let proximo = 0, nCompasso = 0, pausado = true, retomaEm = 0, abafado = false, ativas = 0;
+  let modo = 'cancao', faixa = null, fonteFaixa = null, posFaixa = 0, zeroFaixa = 0, aTocar = false;
+  let aoFalhar = null;
+
+  const hz = m => 440 * Math.pow(2, (m - 69) / 12);
+  const vozes = (pcs, lo) => pcs.map(pc => lo + (((pc - lo) % 12) + 12) % 12).sort((a, b) => a - b);
+
+  const ACORDES = { C: [0, 4, 7], Am: [9, 0, 4], F: [5, 9, 0], G: [7, 11, 2], Dm: [2, 5, 9] };
+  // Canção de embalar original em 3/4: [acorde, melodia [[nota MIDI, tempos]], contracanto]
+  const A1 = [
+    ['C',  [[79, 2], [76, 1]],          76],
+    ['Am', [[81, 1], [84, 1], [81, 1]], 72],
+    ['F',  [[81, 2], [77, 1]],          72],
+    ['G',  [[79, 3]],                   71],
+    ['C',  [[79, 2], [76, 1]],          72],
+    ['Am', [[76, 1], [81, 1], [84, 1]], 76],
+    ['Dm', [[86, 2], [84, 1]],          77],
+    ['G',  [[83, 2], [79, 1]],          74]
+  ];
+  const A2 = [
+    ['C',  [[79, 2], [76, 1]],          76],
+    ['Am', [[81, 1], [84, 1], [81, 1]], 72],
+    ['F',  [[81, 2], [77, 1]],          72],
+    ['G',  [[79, 3]],                   71],
+    ['C',  [[76, 1], [79, 1], [84, 1]], 79],
+    ['Am', [[84, 2], [81, 1]],          76],
+    ['G',  [[79, 1], [77, 1], [74, 1]], 74],
+    ['C',  [[72, 3]],                   72]
+  ];
+  const B = [
+    ['F',  [[81, 2], [84, 1]],          72],
+    ['C',  [[79, 2], [76, 1]],          76],
+    ['Dm', [[77, 1], [81, 1], [86, 1]], 77],
+    ['Am', [[84, 3]],                   76],
+    ['F',  [[81, 1], [79, 1], [77, 1]], 77],
+    ['C',  [[76, 2], [79, 1]],          79],
+    ['Dm', [[77, 2], [74, 1]],          77],
+    ['G',  [[74, 1], [77, 1], [83, 1]], 74]
+  ];
+  const CANCAO = A1.concat(A2, B, A2);
+
+  function ganho(destino, v) { const n = ctx.createGain(); n.gain.value = v; n.connect(destino); return n; }
+  // cada nota fica registada para poder ser cancelada quando a música para
+  function nota(destino, t) { const n = ganho(destino, 0); notas.push({ n, t }); return n; }
+  function osc(tipo, f, t, fim, destino, detune) {
+    const o = ctx.createOscillator();
+    o.type = tipo;
+    o.frequency.setValueAtTime(f, t);
+    if (detune) o.detune.setValueAtTime(detune, t);
+    o.connect(destino);
+    o.start(t);
+    o.stop(fim);
+    return o;
+  }
+  function pica(n, t, pico, tau, ataque) {
+    n.gain.setValueAtTime(0.0001, t);
+    n.gain.linearRampToValueAtTime(pico, t + ataque);
+    n.gain.setTargetAtTime(0.0001, t + ataque, tau);
+  }
+
+  /* --- instrumentos --- */
+  function caixinha(m, t, dur) {                 // 0 · melodia em caixinha de música
+    const f = hz(m);
+    const a = nota(camadas[0], t); pica(a, t, 0.32, Math.min(0.95, 0.42 + dur * 0.15), 0.004); osc('sine', f, t, t + 4.2, a);
+    const b = nota(camadas[0], t); pica(b, t, 0.08, 0.35, 0.003); osc('sine', f * 2, t, t + 1.8, b);
+    const c = nota(camadas[0], t); pica(c, t, 0.05, 0.08, 0.002); osc('sine', f * 4.02, t, t + 0.6, c);
+  }
+  function harpa(m, t, vel) {                    // 1 · harpa
+    const n = nota(camadas[1], t);
+    pica(n, t, 0.2 * vel, 0.5, 0.006);
+    const f = hz(m);
+    osc('triangle', f, t, t + 3, n);
+    osc('sine', f * 2, t, t + 1.5, ganho(n, 0.25));
+  }
+  function baixo(m, t, dur, vel) {               // 2 · baixo
+    const n = nota(camadas[2], t);
+    pica(n, t, 0.34 * vel, dur * 0.45, 0.02);
+    const f = hz(m);
+    osc('sine', f, t, t + dur + 1.6, n);
+    osc('triangle', f * 2, t, t + dur + 1.6, ganho(n, 0.5));
+    osc('sine', f * 3, t, t + dur + 1.2, ganho(n, 0.18));
+  }
+  function acordes(lista, t, dur) {              // 3 · acordes suaves
+    for (const m of lista) {
+      const n = nota(filtroAcordes, t);
+      n.gain.setValueAtTime(0, t);
+      n.gain.linearRampToValueAtTime(0.07, t + 0.9);
+      n.gain.setValueAtTime(0.07, t + dur);
+      n.gain.linearRampToValueAtTime(0, t + dur + 1.3);
+      const f = hz(m);
+      osc('triangle', f, t, t + dur + 1.4, n, -6);
+      osc('sine', f, t, t + dur + 1.4, n, 6);
+    }
+  }
+  function flauta(m, t, dur) {                   // 4 · flauta
+    const f = hz(m);
+    const n = nota(camadas[4], t);
+    n.gain.setValueAtTime(0, t);
+    n.gain.linearRampToValueAtTime(0.12, t + 0.5);
+    n.gain.setValueAtTime(0.12, t + dur - 0.15);
+    n.gain.linearRampToValueAtTime(0, t + dur + 0.55);
+    const o1 = osc('sine', f, t, t + dur + 0.6, n);
+    const o2 = osc('triangle', f, t, t + dur + 0.6, ganho(n, 0.28));
+    const lfo = ctx.createOscillator();
+    lfo.frequency.value = 4.6;
+    const prof = ctx.createGain();
+    prof.gain.setValueAtTime(0, t);
+    prof.gain.linearRampToValueAtTime(f * 0.006, t + 0.9);
+    lfo.connect(prof); prof.connect(o1.frequency); prof.connect(o2.frequency);
+    lfo.start(t); lfo.stop(t + dur + 0.6);
+  }
+  function sino(m, t, vel) {                     // 5 · sininhos
+    const f = hz(m);
+    for (const [mult, pico, tau] of [[1, 0.09, 1.3], [2.76, 0.03, 0.42], [5.4, 0.014, 0.14]]) {
+      const n = nota(camadas[5], t);
+      pica(n, t, pico * vel, tau, 0.003);
+      osc('sine', f * mult, t, t + tau * 7, n);
+    }
+  }
+
+  /* --- sequenciador --- */
+  function evento(t, c, s) { eventos.push({ t, c, s }); }
+  function agendarCompasso(i, t0) {
+    const [nome, melodia, contra] = CANCAO[i % CANCAO.length];
+    const pcs = ACORDES[nome];
+    inicios.push({ i, t: t0 });
+    if (inicios.length > 6) inicios.shift();
+    let tm = t0;
+    for (const [m, d] of melodia) { caixinha(m, tm, d * TEMPO); evento(tm, 0, 1); tm += d * TEMPO; }
+    const [n0, n1, n2] = vozes(pcs, 60);
+    [n0, n1, n2, n0 + 12, n2, n1].forEach((m, k) => {
+      const tk = t0 + k * TEMPO / 2;
+      harpa(m, tk, k ? 0.8 : 1);
+      evento(tk, 1, k ? 0.5 : 0.85);
+    });
+    const raiz = vozes([pcs[0]], 45)[0], quinta = raiz + 7 <= 60 ? raiz + 7 : raiz - 5;
+    baixo(raiz, t0, TEMPO * 2, 1); evento(t0, 2, 1);
+    baixo(quinta, t0 + TEMPO * 2, TEMPO, 0.6); evento(t0 + TEMPO * 2, 2, 0.55);
+    acordes(vozes(pcs, 55), t0, COMPASSO + 0.3); evento(t0, 3, 1);
+    flauta(contra, t0, COMPASSO); evento(t0, 4, 0.9);
+    const altos = vozes(pcs, 84);
+    sino(altos[i % 3], t0, 1); evento(t0, 5, 1);
+    if (i % 2) { const tb = t0 + TEMPO * 1.5; sino(altos[(i + 1) % 3], tb, 0.7); evento(tb, 5, 0.7); }
+    eventos.sort((a, b) => a.t - b.t);
+  }
+  function agendar() {
+    if (!ctx || ctx.state !== 'running' || pausado || modo !== 'cancao') return;
+    const agora = ctx.currentTime;
+    if (proximo < agora) proximo = agora + 0.1;
+    while (proximo < agora + 1.2) { agendarCompasso(nCompasso, proximo); proximo += COMPASSO; nCompasso++; }
+    if (notas.length > 400) notas = notas.filter(x => x.t > agora - 6);
+  }
+
+  /* --- água, eco e desbloqueio do iPhone --- */
+  function ruidoRosa(seg) {
+    const sr = ctx.sampleRate, L = Math.floor(sr * seg), N = Math.floor(sr * 0.5);
+    const buf = ctx.createBuffer(2, L, sr);
+    for (let ch = 0; ch < 2; ch++) {
+      const bruto = new Float32Array(L + N);
+      let b0 = 0, b1 = 0, b2 = 0;
+      for (let i = 0; i < L + N; i++) {
+        const w = Math.random() * 2 - 1;
+        b0 = 0.99765 * b0 + w * 0.099046;
+        b1 = 0.963 * b1 + w * 0.2965164;
+        b2 = 0.57 * b2 + w * 1.0526913;
+        bruto[i] = (b0 + b1 + b2 + w * 0.1848) * 0.2;
+      }
+      const d = buf.getChannelData(ch);
+      for (let i = 0; i < L; i++) {
+        if (i < N) { const k = i / N; d[i] = bruto[i] * Math.sqrt(k) + bruto[L + i] * Math.sqrt(1 - k); }
+        else d[i] = bruto[i];
+      }
+    }
+    return buf;
+  }
+  function ruidoBranco(seg) {
+    const sr = ctx.sampleRate, L = Math.floor(sr * seg), buf = ctx.createBuffer(1, L, sr), d = buf.getChannelData(0);
+    for (let i = 0; i < L; i++) d[i] = Math.random() * 2 - 1;
+    return buf;
+  }
+  function impulso(seg) {
+    const sr = ctx.sampleRate, L = Math.floor(sr * seg), buf = ctx.createBuffer(2, L, sr);
+    for (let ch = 0; ch < 2; ch++) {
+      const d = buf.getChannelData(ch);
+      let v = 0;
+      for (let i = 0; i < L; i++) { v = v * 0.6 + (Math.random() * 2 - 1) * 0.4; d[i] = v * Math.pow(1 - i / L, 3); }
+    }
+    return buf;
+  }
+  function iniciarMar() {
+    const fonte = ctx.createBufferSource();
+    fonte.buffer = ruidoRosa(8);
+    fonte.loop = true;
+    const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 140;
+    const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1000; lp.Q.value = 0.2;
+    const vol = ctx.createGain(); vol.gain.value = 0;
+    fonte.connect(hp); hp.connect(lp); lp.connect(vol); vol.connect(master);
+    const l1 = ctx.createOscillator(); l1.frequency.value = 0.07;
+    const p1 = ctx.createGain(); p1.gain.value = 450; l1.connect(p1); p1.connect(lp.frequency);
+    const l2 = ctx.createOscillator(); l2.frequency.value = 0.11;
+    const p2 = ctx.createGain(); p2.gain.value = AJUSTES.volumeMar * 0.35; l2.connect(p2); p2.connect(vol.gain);
+    const t = ctx.currentTime;
+    fonte.start(t); l1.start(t); l2.start(t);
+    vol.gain.setTargetAtTime(AJUSTES.volumeMar, t, 1);
+  }
+  // Um ficheiro de silêncio a tocar em ciclo faz o iPhone tratar a página como "reprodução de música",
+  // o que evita que o modo silencioso corte o som.
+  function wavSilencioso() {
+    const sr = 8000, n = 4000, buf = new Uint8Array(44 + n), dv = new DataView(buf.buffer);
+    const txt = (o, s) => { for (let i = 0; i < s.length; i++) buf[o + i] = s.charCodeAt(i); };
+    txt(0, 'RIFF'); dv.setUint32(4, 36 + n, true); txt(8, 'WAVE'); txt(12, 'fmt ');
+    dv.setUint32(16, 16, true); dv.setUint16(20, 1, true); dv.setUint16(22, 1, true);
+    dv.setUint32(24, sr, true); dv.setUint32(28, sr, true); dv.setUint16(32, 1, true); dv.setUint16(34, 8, true);
+    txt(36, 'data'); dv.setUint32(40, n, true);
+    buf.fill(128, 44);
+    let s = '';
+    for (let i = 0; i < buf.length; i++) s += String.fromCharCode(buf[i]);
+    return 'data:audio/wav;base64,' + btoa(s);
+  }
+  function desbloquearIOS() {
+    if (!EH_IOS) return;
+    try {
+      if (!desbloqueio) {
+        desbloqueio = document.createElement('audio');
+        desbloqueio.setAttribute('x-webkit-airplay', 'deny');
+        desbloqueio.setAttribute('playsinline', '');
+        desbloqueio.preload = 'auto';
+        desbloqueio.loop = true;
+        desbloqueio.src = wavSilencioso();
+      }
+      semErro(desbloqueio.play());
+    } catch (e) {}
+  }
+  function decodificar(ab) {
+    return new Promise((res, rej) => {
+      try {
+        const p = ctx.decodeAudioData(ab, res, rej);
+        if (p && typeof p.then === 'function') p.then(res, rej);
+      } catch (e) { rej(e); }
+    });
+  }
+  // "blim" ao começar, para confirmar que o som está ligado
+  function sinal() {
+    const t = ctx.currentTime + 0.06;
+    [[79, 0], [84, 0.14]].forEach(([m, d]) => {
+      const f = hz(m);
+      const n = ganho(sfx, 0); pica(n, t + d, 0.14, 0.45, 0.004); osc('sine', f, t + d, t + d + 2.5, n);
+      const n2 = ganho(sfx, 0); pica(n2, t + d, 0.04, 0.16, 0.003); osc('sine', f * 2.76, t + d, t + d + 1, n2);
+    });
+  }
+
+  /* --- música escolhida pelo utilizador --- */
+  function tocarFaixa(t) {
+    if (!faixa || aTocar) return;
+    const f = ctx.createBufferSource();
+    f.buffer = faixa;
+    f.loop = true;
+    f.connect(ganhoFaixa);
+    const arranque = t + 0.05, off = posFaixa % faixa.duration;
+    f.start(arranque, off);
+    zeroFaixa = arranque - off;
+    fonteFaixa = f;
+    aTocar = true;
+  }
+  function pararFaixa(t) {
+    if (!aTocar || !fonteFaixa) return;
+    ganhoFaixa.gain.setTargetAtTime(0, t, 0.1);
+    try { fonteFaixa.stop(t + 0.5); } catch (e) {}
+    posFaixa = Math.max(0, t - zeroFaixa) % faixa.duration;   // ponto onde parou
+    fonteFaixa = null;
+    aTocar = false;
+  }
+
+  /* --- controlo --- */
+  function iniciar(dados, falhou) {
+    aoFalhar = falhou || null;
+    if (ctx) { retomar(); return; }
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) { if (aoFalhar) aoFalhar('semAudio'); return; }
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+    try { ctx = new AC(); } catch (e) { ctx = null; if (aoFalhar) aoFalhar('semAudio'); return; }
+    desbloquearIOS();
+    master = ctx.createGain(); master.gain.value = 1;
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -12; comp.knee.value = 8; comp.ratio.value = 6; comp.attack.value = 0.005; comp.release.value = 0.25;
+    const saida = ctx.createGain(); saida.gain.value = AJUSTES.volumeGeral;
+    master.connect(comp); comp.connect(saida); saida.connect(ctx.destination);
+    reverb = ctx.createConvolver(); reverb.buffer = impulso(3);
+    retorno = ganho(master, 0.3);
+    reverb.connect(retorno);
+    musica = ctx.createGain(); musica.gain.value = VOL_GERAL[1];
+    filtro = ctx.createBiquadFilter(); filtro.type = 'lowpass'; filtro.frequency.value = 16000; filtro.Q.value = 0.5;
+    musica.connect(filtro); filtro.connect(ganho(master, 0.9)); filtro.connect(reverb);
+    sfx = ganho(master, 1); sfx.connect(reverb);
+    for (let i = 0; i < 6; i++) { camadas.push(ganho(musica, 0)); alvo.push(0); }
+    filtroAcordes = ctx.createBiquadFilter(); filtroAcordes.type = 'lowpass'; filtroAcordes.frequency.value = 1800;
+    filtroAcordes.connect(camadas[3]);
+    ganhoFaixa = ctx.createGain(); ganhoFaixa.gain.value = 0;
+    analisador = ctx.createAnalyser(); analisador.fftSize = 1024; amostras = new Uint8Array(analisador.fftSize);
+    ganhoFaixa.connect(analisador); analisador.connect(master);
+    ruido = ruidoBranco(1);
+    iniciarMar();
+    if (dados) {
+      modo = 'ficheiro';
+      decodificar(dados.slice(0)).then(b => {
+        faixa = b;
+        if (ativas > 0 && !aTocar) { const t = ctx.currentTime; tocarFaixa(t); ganhoFaixa.gain.setTargetAtTime(VOL_FAIXA[ativas] * 0.7, t, 0.9); }
+      }).catch(() => {
+        modo = 'cancao';
+        if (aoFalhar) aoFalhar('ficheiro');
+        if (ativas > 0) {
+          const t = ctx.currentTime;
+          pausado = false; nCompasso = 0; proximo = t + 0.15;
+          for (let k = 0; k < ativas; k++) { alvo[k] = VOL[k]; camadas[k].gain.setTargetAtTime(VOL[k], t, 0.6); }
+          musica.gain.setTargetAtTime(VOL_GERAL[ativas], t, 0.8);
+          agendar();
+        }
+      });
+    }
+    setInterval(agendar, 90);
+    retomar();
+    sinal();
+  }
+  function retomar() {
+    if (!ctx) return;
+    if (ctx.state !== 'running') { try { semErro(ctx.resume()); } catch (e) {} }
+    if (desbloqueio && desbloqueio.paused) { try { semErro(desbloqueio.play()); } catch (e) {} }
+  }
+  function suspender() {
+    if (!ctx) return;
+    if (ctx.state === 'running') { try { semErro(ctx.suspend()); } catch (e) {} }
+    if (desbloqueio && !desbloqueio.paused) { try { desbloqueio.pause(); } catch (e) {} }
+  }
+  // Susto: a música para e fica em pausa no compasso onde estava
+  function pausar() {
+    if (!ctx) return;
+    const t = ctx.currentTime;
+    ativas = 0;
+    for (let i = 0; i < camadas.length; i++) if (alvo[i] !== 0) { alvo[i] = 0; camadas[i].gain.setTargetAtTime(0, t, 0.12); }
+    if (!abafado) {
+      abafado = true;
+      filtro.frequency.setTargetAtTime(500, t, 0.08);
+      retorno.gain.setTargetAtTime(0, t, 0.25);
+    }
+    if (modo === 'ficheiro') { pararFaixa(t); return; }
+    if (!pausado) {
+      pausado = true;
+      let atual = null;
+      for (const b of inicios) if (b.t <= t) atual = b;
+      retomaEm = atual ? atual.i : (inicios.length ? inicios[0].i : nCompasso);
+      for (const x of notas) if (x.t > t + 0.02) { try { x.n.disconnect(); } catch (e) {} }
+      notas = notas.filter(x => x.t <= t + 0.02);
+      eventos = eventos.filter(e => e.t <= t);
+      inicios = [];
+    }
+  }
+  // Um bicho voltou: a música recomeça (se estava parada) e ganha mais uma camada
+  function trazer(i, quantos) {
+    if (!ctx) return;
+    const t = ctx.currentTime;
+    ativas = clamp(quantos, 1, 6);
+    if (abafado) {
+      abafado = false;
+      filtro.frequency.setTargetAtTime(16000, t, 0.35);
+      retorno.gain.setTargetAtTime(0.3, t, 0.5);
+    }
+    if (modo === 'ficheiro') {
+      if (faixa && !aTocar) tocarFaixa(t);
+      ganhoFaixa.gain.setTargetAtTime(VOL_FAIXA[ativas] * 0.7, t, 0.9);
+      return;
+    }
+    if (pausado) { pausado = false; nCompasso = retomaEm; proximo = t + 0.15; agendar(); }
+    alvo[i] = VOL[i];
+    camadas[i].gain.setTargetAtTime(VOL[i], t, 0.6);
+    musica.gain.setTargetAtTime(VOL_GERAL[ativas], t, 0.8);
+  }
+  function bolha(vol, tom) {
+    if (!ctx || ctx.state !== 'running') return;
+    const t = ctx.currentTime + 0.01, f0 = rand(230, 360) * (tom || 1);
+    const o = ctx.createOscillator(); o.type = 'sine';
+    o.frequency.setValueAtTime(f0, t);
+    o.frequency.exponentialRampToValueAtTime(f0 * rand(2.6, 3.4), t + 0.09);
+    const n = ganho(sfx, 0);
+    n.gain.setValueAtTime(0.0001, t);
+    n.gain.linearRampToValueAtTime(vol, t + 0.012);
+    n.gain.exponentialRampToValueAtTime(0.0001, t + 0.14);
+    o.connect(n); o.start(t); o.stop(t + 0.16);
+  }
+  function zas() {
+    if (!ctx || ctx.state !== 'running') return;
+    const t = ctx.currentTime + 0.01;
+    const src = ctx.createBufferSource(); src.buffer = ruido;
+    const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 0.8;
+    bp.frequency.setValueAtTime(1500, t);
+    bp.frequency.exponentialRampToValueAtTime(240, t + 0.55);
+    const n = ganho(sfx, 0);
+    n.gain.setValueAtTime(0.0001, t);
+    n.gain.linearRampToValueAtTime(0.06, t + 0.06);
+    n.gain.exponentialRampToValueAtTime(0.0001, t + 0.6);
+    src.connect(bp); bp.connect(n); src.start(t); src.stop(t + 0.65);
+  }
+  // entrega à animação as notas que estão a soar agora (os bichos pulsam com a música)
+  function consumir(fn) {
+    if (!ctx) return;
+    const agora = ctx.currentTime - (ctx.outputLatency || ctx.baseLatency || 0);
+    while (eventos.length && eventos[0].t <= agora) { const e = eventos.shift(); fn(e.c, e.s); }
+  }
+  function nivel() {
+    if (!analisador || modo !== 'ficheiro' || !aTocar) return 0;
+    analisador.getByteTimeDomainData(amostras);
+    let s = 0;
+    for (let k = 0; k < amostras.length; k += 2) { const v = (amostras[k] - 128) / 128; s += v * v; }
+    return Math.sqrt(s / (amostras.length / 2));
+  }
+  const aTocarSom = () => !!ctx && ctx.state === 'running';
+  return { iniciar, retomar, suspender, pausar, trazer, bolha, zas, consumir, nivel, aTocarSom };
+})();
+
+/* ===== memória da música escolhida (fica neste navegador) ===== */
+const BD = (() => {
+  let p = null;
+  function abrir() {
+    if (!p) p = new Promise((res, rej) => {
+      try {
+        const r = window.indexedDB.open('peixinhos-timidos', 1);
+        r.onupgradeneeded = () => r.result.createObjectStore('musica');
+        r.onsuccess = () => res(r.result);
+        r.onerror = () => rej(r.error);
+      } catch (e) { rej(e); }
+    });
+    return p;
+  }
+  function pedido(tipo, fn) {
+    return abrir().then(db => new Promise((res, rej) => {
+      const tx = db.transaction('musica', tipo);
+      const q = fn(tx.objectStore('musica'));
+      tx.oncomplete = () => res(q ? q.result : undefined);
+      tx.onerror = () => rej(tx.error);
+      tx.onabort = () => rej(tx.error);
+    }));
+  }
+  return {
+    ler: () => pedido('readonly', s => s.get('atual')),
+    guardar: v => pedido('readwrite', s => s.put(v, 'atual')),
+    apagar: () => pedido('readwrite', s => s.delete('atual'))
+  };
+})();
+
+/* ================= CENA ================= */
+const cv = document.getElementById('mar');
+const g = cv.getContext('2d', { alpha: false });
+const inicio = document.getElementById('inicio');
+const aviso = document.getElementById('aviso');
+const nomeMusica = document.getElementById('nomeMusica');
+const escolherBtn = document.getElementById('escolher');
+const usarJogoBtn = document.getElementById('usarJogo');
+const inputFicheiro = document.getElementById('ficheiro');
+
+let W = 1, H = 1, DPR = 1, U = 4, rect = cv.getBoundingClientRect();
+let fundo = null, vinheta = null, gradRaio = null;
+let algas = [], algasFrente = [], particulas = [], raios = [];
+const bolhas = [], ondas = [], brilhos = [];
+let turb = 0, comecou = false, graca = 0, ultimoToque = -99, proxRegresso = 0, proxBolhas = 0;
+let ultimoZas = 0, ultimoSomBolha = 0, ultimoRastro = 0, mediaNivel = 0, ultimoPulsoFaixa = 0;
+let musicaDados = null, musicaNome = '';
+
+const areiaY = x => H * 0.865 + Math.sin(x / W * TAU * 1.3 + 0.7) * H * 0.018 + Math.sin(x / W * TAU * 3.1 + 2) * H * 0.006;
+
+// Cada bicho traz de volta uma parte da música; voltam pela ordem da camada (a melodia primeiro)
+const ESPECIES = [
+  { tipo: 'peixe', camada: 2, tam: 1.38, ry: 0.66, cauda: 'leque', velo: 0.7,        // baixo
+    cima: '#7f67dc', meio: '#ad98ff', barriga: '#f1ecff', barbatana: '#9c84f2', brilho: '#cdbfff',
+    padrao: 'bolinhas', padraoCor: 'rgba(255,255,255,0.3)' },
+  { tipo: 'peixe', camada: 0, tam: 1.0, ry: 0.8, cauda: 'redonda', velo: 0.85,       // melodia
+    cima: '#ea6f25', meio: '#ffa94f', barriga: '#fff1d8', barbatana: '#ff8f3d', brilho: '#ffc98a',
+    padrao: 'nenhum' },
+  { tipo: 'peixe', camada: 1, tam: 0.95, ry: 0.56, cauda: 'bifurcada', velo: 1.1,    // harpa
+    cima: '#e8ad00', meio: '#ffdf5e', barriga: '#fffbe3', barbatana: '#ffc72e', brilho: '#fff0a0',
+    padrao: 'riscas', padraoCor: 'rgba(255,150,70,0.5)' },
+  { tipo: 'medusa', camada: 3, tam: 1.05, velo: 0.55,                                // acordes
+    cima: '#f45d9f', meio: '#ffaad0', barriga: '#fff1f8', barbatana: '#ffc3df', brilho: '#ffd3e8' },
+  { tipo: 'peixe', camada: 4, tam: 0.92, ry: 0.42, cauda: 'bifurcada', velo: 1.0,    // flauta
+    cima: '#16a37b', meio: '#66e3b4', barriga: '#e6fff5', barbatana: '#3fd39b', brilho: '#adffe0',
+    padrao: 'pintas', padraoCor: 'rgba(255,255,255,0.55)' },
+  { tipo: 'peixe', camada: 5, tam: 0.72, ry: 0.74, cauda: 'leque', velo: 1.2,        // sininhos
+    cima: '#dc4d78', meio: '#ff91b2', barriga: '#ffe9f0', barbatana: '#ffc14d', brilho: '#ffe39a',
+    padrao: 'nenhum' }
+];
+const DECAI = [3.2, 7, 4, 1.4, 1.8, 2.8];   // rapidez com que o brilho de cada camada se apaga
+
+const criaturas = ESPECIES.map((esp, i) => {
+  const manchas = [];
+  if (esp.padrao === 'bolinhas') for (let k = 0; k < 6; k++) manchas.push([rand(-0.8, 0.2), rand(-0.6, 0.45), rand(0.08, 0.14)]);
+  if (esp.padrao === 'pintas') for (let k = 0; k < 14; k++) manchas.push([rand(-0.9, 0.28), rand(-0.6, 0.5), rand(0.03, 0.055)]);
+  return { esp, i, estado: 'escondido', x: -9999, y: -9999, vx: 0, vy: 0, tx: 0, ty: 0, tempoAlvo: 0,
+    S: 30, face: 1, faceEsc: 1, rot: 0, fase: rand(0, TAU), cauda: rand(0, TAU), pulso: 0, susto: 0,
+    piscar: rand(2, 6), piscando: 0, atraso: 0, fx: 0, fy: 0, fvel: 0, manchas };
+});
+const porCamada = [];
+criaturas.forEach(c => { porCamada[c.esp.camada] = c; });
+const ordemDesenho = criaturas.slice().sort((a, b) => b.esp.tam - a.esp.tam);
+const presentes = () => criaturas.reduce((n, c) => n + (c.estado === 'nadar' || c.estado === 'entrando' ? 1 : 0), 0);
+
+/* --- cenário --- */
+function gerarAlgas() {
+  algas = []; algasFrente = [];
+  const nova = (x, h, larg, cor, folhas) => ({ x, y: areiaY(x) + U * 0.8, h, larg, cor, folhas, segs: 12,
+    fase: rand(0, TAU), vel: rand(0.55, 0.95), amp: U * rand(2.2, 4.2), xs: new Float32Array(13), ys: new Float32Array(13) });
+  const n = Math.max(6, Math.round(W / 75));
+  for (let k = 0; k < n; k++) {
+    const x = (k + rand(0.15, 0.85)) / n * W;
+    algas.push(nova(x, H * rand(0.13, 0.3), U * rand(1.5, 2.5), escolher(['#2e9a70', '#38a67b', '#258566', '#47b286', '#2f8f7a']), Math.random() < 0.6));
+  }
+  for (let k = 0; k < 2; k++) { const x = rand(0.1, 0.9) * W; algas.push(nova(x, H * rand(0.08, 0.14), U * rand(1.8, 2.6), '#d9708f', true)); }
+  for (const x of [W * rand(0, 0.05), W * rand(0.95, 1)]) algasFrente.push(nova(x, H * rand(0.2, 0.34), U * rand(2.6, 3.4), '#17644d', true));
+  algasFrente.push(nova(W * rand(0.06, 0.1), H * rand(0.12, 0.2), U * rand(2, 2.8), '#1c7357', true));
+}
+function gerarParticulas() {
+  particulas = [];
+  const n = Math.round(clamp(W * H / 14000, 24, 80)), base = Math.max(1.2, U * 0.4);
+  for (let k = 0; k < n; k++) particulas.push({ x: rand(0, W), y: rand(0, H * 0.9), r: rand(0.35, 1.1) * base,
+    vx: rand(-0.4, 0.4) * U, vy: -rand(0.2, 1.1) * U, fase: rand(0, TAU), a: rand(0.18, 0.5) });
+}
+function gerarRaios() {
+  raios = [];
+  for (let k = 0; k < 5; k++) raios.push({ x: (k + rand(0.2, 0.8)) / 5 * W, w0: W * rand(0.02, 0.05), w1: W * rand(0.12, 0.24),
+    fase: rand(0, TAU), vel: rand(0.08, 0.16), a: rand(0.07, 0.13) });
+  gradRaio = g.createLinearGradient(0, 0, 0, H * 0.88);
+  gradRaio.addColorStop(0, 'rgba(205,245,255,1)');
+  gradRaio.addColorStop(1, 'rgba(205,245,255,0)');
+}
+function colina(b, base, amp, freq, fase, cor) {
+  b.beginPath(); b.moveTo(0, H);
+  for (let x = 0; x <= W + 10; x += 10) {
+    const y = H * base - H * amp * (0.5 + 0.5 * Math.sin(x / W * TAU * freq + fase)) - H * amp * 0.3 * Math.sin(x / W * TAU * freq * 2.3 + fase * 1.7);
+    b.lineTo(x, y);
+  }
+  b.lineTo(W, H); b.closePath(); b.fillStyle = cor; b.fill();
+}
+function coralLonge(b, x, y, s, cor) {
+  b.strokeStyle = cor; b.lineCap = 'round';
+  const ramo = (x0, y0, ang, len, w, n) => {
+    const x1 = x0 + Math.cos(ang) * len, y1 = y0 + Math.sin(ang) * len;
+    b.lineWidth = w; b.beginPath(); b.moveTo(x0, y0); b.lineTo(x1, y1); b.stroke();
+    if (n > 0) { ramo(x1, y1, ang - rand(0.25, 0.6), len * 0.72, w * 0.72, n - 1); ramo(x1, y1, ang + rand(0.25, 0.6), len * 0.72, w * 0.72, n - 1); }
+  };
+  ramo(x, y, -Math.PI / 2 + rand(-0.15, 0.15), s, s * 0.22, 3);
+}
+function rocha(b, x, y, s) {
+  const gr = b.createLinearGradient(0, y - s, 0, y + s * 0.4);
+  gr.addColorStop(0, '#3f7598'); gr.addColorStop(1, '#23506f');
+  b.fillStyle = gr;
+  b.beginPath(); b.moveTo(x - s * 1.3, y + s * 0.4);
+  b.bezierCurveTo(x - s * 1.4, y - s * 0.5, x - s * 0.6, y - s * 1.05, x + s * 0.05, y - s * 0.95);
+  b.bezierCurveTo(x + s * 0.8, y - s * 0.9, x + s * 1.35, y - s * 0.3, x + s * 1.25, y + s * 0.4);
+  b.closePath(); b.fill();
+  b.fillStyle = 'rgba(95,180,140,0.35)';
+  for (let k = 0; k < 4; k++) {
+    b.beginPath();
+    b.ellipse(x + rand(-0.7, 0.7) * s, y - rand(0.3, 0.8) * s, s * rand(0.12, 0.22), s * rand(0.06, 0.12), rand(-0.4, 0.4), 0, TAU);
+    b.fill();
+  }
+}
+function concha(b, x, y, s) {
+  b.fillStyle = '#f4e3cd';
+  b.beginPath(); b.moveTo(x, y + s * 0.5);
+  b.lineTo(x - s * 0.95, y - s * 0.15); b.quadraticCurveTo(x, y - s * 1.25, x + s * 0.95, y - s * 0.15);
+  b.closePath(); b.fill();
+  b.strokeStyle = 'rgba(180,140,110,0.6)'; b.lineWidth = Math.max(0.8, s * 0.08);
+  for (let k = -2; k <= 2; k++) { b.beginPath(); b.moveTo(x, y + s * 0.45); b.lineTo(x + k * s * 0.35, y - s * 0.55 + Math.abs(k) * s * 0.18); b.stroke(); }
+}
+function estrela(b, x, y, r, cor) {
+  b.save(); b.translate(x, y); b.rotate(rand(-0.4, 0.4)); b.scale(1, 0.55);
+  b.fillStyle = cor; b.strokeStyle = cor; b.lineJoin = 'round'; b.lineWidth = r * 0.25;
+  b.beginPath();
+  for (let k = 0; k < 10; k++) {
+    const a = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? r * 0.45 : r;
+    if (k) b.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); else b.moveTo(Math.cos(a) * rr, Math.sin(a) * rr);
+  }
+  b.closePath(); b.stroke(); b.fill();
+  b.fillStyle = 'rgba(255,255,255,0.5)';
+  for (let k = 0; k < 5; k++) { const a = -Math.PI / 2 + k * TAU / 5; b.beginPath(); b.arc(Math.cos(a) * r * 0.55, Math.sin(a) * r * 0.55, r * 0.07, 0, TAU); b.fill(); }
+  b.restore();
+}
+function construirFundo() {
+  fundo = document.createElement('canvas');
+  fundo.width = cv.width; fundo.height = cv.height;
+  const b = fundo.getContext('2d');
+  b.setTransform(DPR, 0, 0, DPR, 0, 0);
+  let gr = b.createLinearGradient(0, 0, 0, H);
+  gr.addColorStop(0, '#4db8df'); gr.addColorStop(0.28, '#2689bf'); gr.addColorStop(0.65, '#155f93'); gr.addColorStop(1, '#0c3f69');
+  b.fillStyle = gr; b.fillRect(0, 0, W, H);
+  gr = b.createRadialGradient(W * 0.5, -H * 0.15, 0, W * 0.5, -H * 0.15, Math.max(W, H) * 0.85);
+  gr.addColorStop(0, 'rgba(210,248,255,0.4)'); gr.addColorStop(1, 'rgba(210,248,255,0)');
+  b.fillStyle = gr; b.fillRect(0, 0, W, H);
+  colina(b, 0.70, 0.07, 1.3, 0.4, 'rgba(24,96,146,0.55)');
+  const nc = Math.max(3, Math.round(W / 220));
+  for (let k = 0; k < nc; k++) coralLonge(b, (k + rand(0.1, 0.9)) / nc * W, H * rand(0.73, 0.79), U * rand(4.5, 8), 'rgba(22,92,142,0.75)');
+  colina(b, 0.77, 0.06, 2.2, 2.1, 'rgba(18,84,130,0.7)');
+  rocha(b, W * 0.07, areiaY(W * 0.07) + U * 2, U * 10);
+  rocha(b, W * 0.93, areiaY(W * 0.93) + U * 1.5, U * 12);
+  b.beginPath(); b.moveTo(0, H);
+  for (let x = 0; x <= W + 8; x += 8) b.lineTo(x, areiaY(x));
+  b.lineTo(W, H); b.closePath();
+  gr = b.createLinearGradient(0, H * 0.83, 0, H);
+  gr.addColorStop(0, '#e2cc98'); gr.addColorStop(1, '#b29566');
+  b.fillStyle = gr; b.fill();
+  b.fillStyle = 'rgba(40,120,180,0.2)'; b.fill();
+  b.lineCap = 'round';
+  b.strokeStyle = 'rgba(255,248,225,0.22)'; b.lineWidth = Math.max(1, U * 0.3);
+  for (let k = 0; k < 14; k++) {
+    const x = rand(0, W), top = areiaY(x), y = top + rand(0.2, 0.9) * (H - top), w = U * rand(4, 9);
+    b.beginPath(); b.moveTo(x - w, y); b.quadraticCurveTo(x, y - U * 0.8, x + w, y); b.stroke();
+  }
+  for (let k = 0; k < 10; k++) {
+    const x = rand(0, W), top = areiaY(x), y = top + rand(0.15, 0.8) * (H - top);
+    b.fillStyle = escolher(['#8f96a3', '#7b8594', '#a39c90']);
+    b.beginPath(); b.ellipse(x, y, U * rand(0.6, 1.4), U * rand(0.4, 0.8), 0, 0, TAU); b.fill();
+  }
+  for (let k = 0; k < 3; k++) { const x = rand(W * 0.15, W * 0.85), top = areiaY(x); concha(b, x, top + (H - top) * rand(0.35, 0.7), U * rand(1.3, 2)); }
+  const xe = W * rand(0.6, 0.8), te = areiaY(xe);
+  estrela(b, xe, te + (H - te) * 0.45, U * 2.8, '#ff9e7a');
+
+  vinheta = document.createElement('canvas');
+  vinheta.width = cv.width; vinheta.height = cv.height;
+  const v = vinheta.getContext('2d');
+  v.setTransform(DPR, 0, 0, DPR, 0, 0);
+  const R = Math.hypot(W, H) / 2;
+  gr = v.createRadialGradient(W / 2, H * 0.45, R * 0.45, W / 2, H * 0.45, R * 1.05);
+  gr.addColorStop(0, 'rgba(4,24,48,0)'); gr.addColorStop(1, 'rgba(4,24,48,0.42)');
+  v.fillStyle = gr; v.fillRect(0, 0, W, H);
+}
+
+/* --- desenho --- */
+function desenharCausticas(t) {
+  g.save();
+  g.globalCompositeOperation = 'lighter';
+  g.strokeStyle = 'rgba(255,255,230,0.08)';
+  g.lineWidth = Math.max(1, U * 0.5);
+  for (let k = 0; k < 4; k++) {
+    g.beginPath();
+    for (let x = -16; x <= W + 16; x += 16) {
+      const top = areiaY(x);
+      const y = top + (H - top) * (0.18 + k * 0.2) + Math.sin(x * 0.03 + t * (0.8 + k * 0.2) + k) * U * 0.8;
+      if (x === -16) g.moveTo(x, y); else g.lineTo(x, y);
+    }
+    g.stroke();
+  }
+  g.restore();
+}
+function desenharRaios(t) {
+  g.save();
+  g.globalCompositeOperation = 'lighter';
+  g.fillStyle = gradRaio;
+  for (const r of raios) {
+    const sw = Math.sin(t * r.vel + r.fase) * W * 0.06;
+    g.globalAlpha = r.a * (0.7 + 0.3 * Math.sin(t * r.vel * 2.3 + r.fase * 1.7));
+    g.beginPath();
+    g.moveTo(r.x - r.w0 / 2, -4); g.lineTo(r.x + r.w0 / 2, -4);
+    g.lineTo(r.x + sw + r.w1 / 2, H * 0.88); g.lineTo(r.x + sw - r.w1 / 2, H * 0.88);
+    g.closePath(); g.fill();
+  }
+  g.restore();
+}
+function desenharAlgas(lista, t) {
+  for (const a of lista) {
+    const n = a.segs;
+    for (let i = 0; i <= n; i++) {
+      const k = i / n;
+      a.xs[i] = a.x + Math.sin(t * a.vel + a.fase - k * 2.4) * a.amp * k * (1 + turb * 1.3) + Math.sin(k * 5 + a.fase) * a.amp * 0.25 * k;
+      a.ys[i] = a.y - a.h * k;
+    }
+    g.fillStyle = a.cor;
+    g.beginPath();
+    for (let i = 0; i <= n; i++) { const w = a.larg * (1 - (i / n) * 0.85) * 0.5; if (i) g.lineTo(a.xs[i] - w, a.ys[i]); else g.moveTo(a.xs[i] - w, a.ys[i]); }
+    for (let i = n; i >= 0; i--) { const w = a.larg * (1 - (i / n) * 0.85) * 0.5; g.lineTo(a.xs[i] + w, a.ys[i]); }
+    g.closePath(); g.fill();
+    if (a.folhas) {
+      for (let i = 2; i < n; i += 2) {
+        const lado = (i / 2) % 2 ? 1 : -1;
+        g.beginPath();
+        g.ellipse(a.xs[i] + lado * a.larg * 0.9, a.ys[i] - a.larg * 0.3, a.larg * 1.1, a.larg * 0.42, -lado * 0.6 + Math.sin(t * a.vel + i) * 0.15, 0, TAU);
+        g.fill();
+      }
+    }
+  }
+}
+function desenharParticulas(t) {
+  g.save();
+  g.fillStyle = 'rgb(225,248,255)';
+  for (const p of particulas) {
+    g.globalAlpha = p.a * (0.6 + 0.4 * Math.sin(t * 1.3 + p.fase));
+    g.beginPath(); g.arc(p.x, p.y, p.r, 0, TAU); g.fill();
+  }
+  g.restore();
+}
+function corpoPath(rx, ry) {
+  g.beginPath();
+  g.moveTo(rx, 0);
+  g.bezierCurveTo(rx, -ry * 0.72, rx * 0.42, -ry, -rx * 0.12, -ry);
+  g.bezierCurveTo(-rx * 0.62, -ry, -rx, -ry * 0.42, -rx, 0);
+  g.bezierCurveTo(-rx, ry * 0.42, -rx * 0.62, ry, -rx * 0.12, ry);
+  g.bezierCurveTo(rx * 0.42, ry, rx, ry * 0.72, rx, 0);
+  g.closePath();
+}
+function caudaPath(tipo, rx, ry) {
+  const L = rx * 0.62, A = ry * 0.9;
+  g.beginPath();
+  g.moveTo(rx * 0.1, 0);
+  if (tipo === 'bifurcada') {
+    g.quadraticCurveTo(-L * 0.4, -A * 0.25, -L, -A);
+    g.quadraticCurveTo(-L * 0.55, -A * 0.1, -L * 0.62, 0);
+    g.quadraticCurveTo(-L * 0.55, A * 0.1, -L, A);
+    g.quadraticCurveTo(-L * 0.4, A * 0.25, rx * 0.1, 0);
+  } else if (tipo === 'leque') {
+    g.bezierCurveTo(-L * 0.3, -A * 0.4, -L * 0.8, -A * 1.05, -L * 1.05, -A * 0.7);
+    g.quadraticCurveTo(-L * 1.3, 0, -L * 1.05, A * 0.7);
+    g.bezierCurveTo(-L * 0.8, A * 1.05, -L * 0.3, A * 0.4, rx * 0.1, 0);
+  } else {
+    g.bezierCurveTo(-L * 0.2, -A * 0.5, -L * 1.1, -A * 0.95, -L, 0);
+    g.bezierCurveTo(-L * 1.1, A * 0.95, -L * 0.2, A * 0.5, rx * 0.1, 0);
+  }
+  g.closePath();
+}
+function desenharPeixe(c) {
+  const e = c.esp, rx = c.S, ry = c.S * e.ry, p = c.pulso;
+  if (p > 0.02) {
+    g.save();
+    g.globalCompositeOperation = 'lighter';
+    const gl = g.createRadialGradient(0, 0, rx * 0.2, 0, 0, rx * 1.9);
+    gl.addColorStop(0, rgba(e.brilho, 0.42 * p)); gl.addColorStop(1, rgba(e.brilho, 0));
+    g.fillStyle = gl; g.beginPath(); g.arc(0, 0, rx * 1.9, 0, TAU); g.fill();
+    g.restore();
+  }
+  const esc = 1 + p * 0.07;
+  g.save();
+  g.scale(esc, esc);
+  const fugindo = c.estado === 'fugir';
+  const abano = Math.sin(c.cauda) * (fugindo ? 0.5 : 0.28);
+  g.save();
+  g.translate(-rx * 0.84, 0); g.rotate(abano);
+  g.fillStyle = e.barbatana; caudaPath(e.cauda, rx, ry); g.fill();
+  g.strokeStyle = 'rgba(255,255,255,0.3)'; g.lineWidth = Math.max(0.8, rx * 0.03);
+  for (const k of [-0.55, 0, 0.55]) { g.beginPath(); g.moveTo(-rx * 0.05, 0); g.lineTo(-rx * 0.52, k * ry * 0.7); g.stroke(); }
+  g.restore();
+  g.fillStyle = e.barbatana;
+  const ond = Math.sin(c.cauda * 0.7) * ry * 0.08;
+  g.beginPath(); g.moveTo(-rx * 0.52, -ry * 0.74); g.quadraticCurveTo(-rx * 0.15, -ry * 1.75 + ond, rx * 0.34, -ry * 0.84); g.closePath(); g.fill();
+  g.beginPath(); g.moveTo(-rx * 0.28, ry * 0.82); g.quadraticCurveTo(-rx * 0.08, ry * 1.42 - ond, rx * 0.16, ry * 0.86); g.closePath(); g.fill();
+  corpoPath(rx, ry);
+  const gr = g.createLinearGradient(0, -ry, 0, ry);
+  gr.addColorStop(0, e.cima); gr.addColorStop(0.45, e.meio); gr.addColorStop(1, e.barriga);
+  g.fillStyle = gr; g.fill();
+  g.save();
+  corpoPath(rx, ry); g.clip();
+  if (e.padrao === 'riscas') {
+    g.fillStyle = e.padraoCor;
+    for (const px of [-0.5, -0.12, 0.24]) { g.beginPath(); g.ellipse(px * rx, 0, rx * 0.08, ry * 1.2, 0.1, 0, TAU); g.fill(); }
+  } else if (c.manchas.length) {
+    g.fillStyle = e.padraoCor;
+    for (const m of c.manchas) { g.beginPath(); g.arc(m[0] * rx, m[1] * ry, m[2] * rx, 0, TAU); g.fill(); }
+  }
+  g.fillStyle = 'rgba(255,255,255,0.24)';
+  g.beginPath(); g.ellipse(rx * 0.05, -ry * 0.55, rx * 0.55, ry * 0.2, -0.06, 0, TAU); g.fill();
+  g.restore();
+  g.save();
+  g.translate(rx * 0.1, ry * 0.3); g.rotate(0.55 + Math.sin(c.cauda * 1.4) * 0.35);
+  g.fillStyle = rgba(e.barbatana, 0.92);
+  g.beginPath(); g.ellipse(-rx * 0.13, 0, rx * 0.22, ry * 0.14, 0, 0, TAU); g.fill();
+  g.restore();
+  const er = Math.min(ry * 0.36, rx * 0.25);
+  g.fillStyle = 'rgba(255,110,145,0.35)';
+  g.beginPath(); g.ellipse(rx * 0.44, ry * 0.3, er * 0.62, er * 0.4, 0, 0, TAU); g.fill();
+  g.save();
+  g.translate(rx * 0.5, -ry * 0.14); g.scale(1, c.piscando > 0 ? 0.12 : 1);
+  g.fillStyle = '#fff'; g.beginPath(); g.arc(0, 0, er, 0, TAU); g.fill();
+  g.strokeStyle = 'rgba(29,36,64,0.25)'; g.lineWidth = Math.max(0.8, er * 0.08); g.stroke();
+  const pr = er * (0.64 - c.susto * 0.2);
+  g.fillStyle = '#1d2440'; g.beginPath(); g.arc(er * 0.14, er * 0.06, pr, 0, TAU); g.fill();
+  g.fillStyle = '#fff';
+  g.beginPath(); g.arc(0, -er * 0.22, pr * 0.4, 0, TAU); g.fill();
+  g.beginPath(); g.arc(er * 0.3, er * 0.25, pr * 0.16, 0, TAU); g.fill();
+  g.restore();
+  g.strokeStyle = '#3a2440'; g.fillStyle = '#3a2440'; g.lineWidth = Math.max(1.2, rx * 0.045); g.lineCap = 'round';
+  if (c.susto > 0.3) { g.beginPath(); g.ellipse(rx * 0.86, ry * 0.18, rx * 0.05, rx * 0.065, 0, 0, TAU); g.fill(); }
+  else { g.beginPath(); g.arc(rx * 0.78, ry * 0.06, rx * 0.1, 0.2 * Math.PI, 0.8 * Math.PI); g.stroke(); }
+  g.restore();
+}
+function desenharMedusa(c, t) {
+  const e = c.esp, R = c.S * 0.95, p = c.pulso;
+  const resp = 0.5 + 0.5 * Math.sin(c.cauda);
+  const sx = 1 + 0.07 * resp + 0.1 * p, sy = 1 - 0.08 * resp - 0.1 * p;
+  if (p > 0.02) {
+    g.save();
+    g.globalCompositeOperation = 'lighter';
+    const gl = g.createRadialGradient(0, -R * 0.2, R * 0.2, 0, -R * 0.2, R * 2.1);
+    gl.addColorStop(0, rgba(e.brilho, 0.4 * p)); gl.addColorStop(1, rgba(e.brilho, 0));
+    g.fillStyle = gl; g.beginPath(); g.arc(0, -R * 0.2, R * 2.1, 0, TAU); g.fill();
+    g.restore();
+  }
+  g.lineCap = 'round';
+  g.strokeStyle = rgba(e.barbatana, 0.8);
+  g.lineWidth = Math.max(1.2, R * 0.065);
+  const n = 7;
+  for (let i = 0; i < n; i++) {
+    const k = i / (n - 1), x0 = (k - 0.5) * R * 1.55 * sx, len = R * (1.4 + 0.45 * Math.abs(Math.sin(i * 1.9 + 0.3)));
+    g.beginPath(); g.moveTo(x0, R * 0.08);
+    for (let s = 1; s <= 8; s++) {
+      const q = s / 8;
+      g.lineTo(x0 + Math.sin(t * 2.4 + i * 0.8 + q * 3.4 + c.fase) * R * 0.16 * q, R * 0.08 + len * q * (0.92 + 0.08 * resp));
+    }
+    g.stroke();
+  }
+  g.strokeStyle = rgba(e.barriga, 0.85);
+  g.lineWidth = Math.max(2, R * 0.16);
+  for (const off of [-0.18, 0.18]) {
+    g.beginPath(); g.moveTo(off * R, R * 0.05);
+    for (let s = 1; s <= 8; s++) {
+      const q = s / 8;
+      g.lineTo(off * R + Math.sin(t * 1.8 + q * 4 + off * 9 + c.fase) * R * 0.12 * q, R * 0.05 + R * 1.05 * q);
+    }
+    g.stroke();
+  }
+  g.save();
+  g.scale(sx, sy);
+  const gr = g.createRadialGradient(-R * 0.3, -R * 0.7, R * 0.08, 0, -R * 0.3, R * 1.15);
+  gr.addColorStop(0, e.barriga); gr.addColorStop(0.45, e.meio); gr.addColorStop(1, e.cima);
+  g.fillStyle = gr;
+  g.beginPath(); g.moveTo(-R, 0);
+  g.bezierCurveTo(-R, -R * 1.12, R, -R * 1.12, R, 0);
+  const recortes = 6;
+  for (let s = 0; s < recortes; s++) {
+    const x1 = R - 2 * R * (s + 0.5) / recortes, x2 = R - 2 * R * (s + 1) / recortes;
+    g.quadraticCurveTo(x1, R * 0.17, x2, 0);
+  }
+  g.closePath(); g.fill();
+  g.fillStyle = 'rgba(255,255,255,0.45)';
+  g.beginPath(); g.ellipse(-R * 0.4, -R * 0.55, R * 0.24, R * 0.1, -0.6, 0, TAU); g.fill();
+  const er = R * 0.12, olho = 1 + c.susto * 0.25;
+  for (const lado of [-1, 1]) {
+    g.save();
+    g.translate(lado * R * 0.3, -R * 0.34); g.scale(1, c.piscando > 0 ? 0.15 : 1);
+    g.fillStyle = '#2a1f3d'; g.beginPath(); g.ellipse(0, 0, er * olho, er * 1.2 * olho, 0, 0, TAU); g.fill();
+    g.fillStyle = '#fff'; g.beginPath(); g.arc(-er * 0.3, -er * 0.4, er * 0.38, 0, TAU); g.fill();
+    g.restore();
+    g.fillStyle = 'rgba(255,110,150,0.4)';
+    g.beginPath(); g.ellipse(lado * R * 0.55, -R * 0.16, er * 1.1, er * 0.65, 0, 0, TAU); g.fill();
+  }
+  g.strokeStyle = '#2a1f3d'; g.fillStyle = '#2a1f3d'; g.lineWidth = Math.max(1.2, R * 0.05);
+  if (c.susto > 0.3) { g.beginPath(); g.ellipse(0, -R * 0.12, R * 0.06, R * 0.08, 0, 0, TAU); g.fill(); }
+  else { g.beginPath(); g.arc(0, -R * 0.2, R * 0.12, 0.15 * Math.PI, 0.85 * Math.PI); g.stroke(); }
+  g.restore();
+}
+function desenharCriatura(c, t) {
+  const balanco = c.estado === 'fugir' ? 0 : Math.sin(t * 1.3 + c.fase) * U * 0.7;
+  g.save();
+  g.translate(c.x, c.y + balanco);
+  if (c.esp.tipo === 'peixe') {
+    g.scale(Math.abs(c.faceEsc) < 0.04 ? 0.04 * c.face : c.faceEsc, 1);
+    g.rotate(c.rot);
+    desenharPeixe(c);
+  } else {
+    g.rotate(c.rot);
+    desenharMedusa(c, t);
+  }
+  g.restore();
+}
+function desenharBolhas() {
+  for (const b of bolhas) {
+    g.beginPath(); g.arc(b.x, b.y, b.r, 0, TAU);
+    g.fillStyle = 'rgba(255,255,255,0.1)'; g.fill();
+    g.strokeStyle = 'rgba(230,248,255,0.65)'; g.lineWidth = Math.max(0.8, b.r * 0.14); g.stroke();
+    g.beginPath(); g.arc(b.x - b.r * 0.35, b.y - b.r * 0.35, b.r * 0.25, 0, TAU);
+    g.fillStyle = 'rgba(255,255,255,0.75)'; g.fill();
+  }
+}
+function desenharBrilhos() {
+  g.save();
+  g.globalCompositeOperation = 'lighter';
+  for (const s of brilhos) {
+    const r = s.r, q = r * 0.28;
+    g.fillStyle = 'rgba(255,236,160,' + clamp(s.a, 0, 1).toFixed(3) + ')';
+    g.beginPath();
+    g.moveTo(s.x, s.y - r); g.lineTo(s.x + q, s.y - q); g.lineTo(s.x + r, s.y); g.lineTo(s.x + q, s.y + q);
+    g.lineTo(s.x, s.y + r); g.lineTo(s.x - q, s.y + q); g.lineTo(s.x - r, s.y); g.lineTo(s.x - q, s.y - q);
+    g.closePath(); g.fill();
+  }
+  g.restore();
+}
+function desenharOndas() {
+  for (const o of ondas) {
+    g.strokeStyle = 'rgba(255,255,255,' + clamp(0.55 * o.a, 0, 1).toFixed(3) + ')';
+    g.lineWidth = Math.max(1, U * 0.5 * o.a);
+    g.beginPath(); g.arc(o.x, o.y, o.r, 0, TAU); g.stroke();
+    if (o.r > U * 6) { g.beginPath(); g.arc(o.x, o.y, o.r * 0.6, 0, TAU); g.stroke(); }
+  }
+}
+function desenharSuperficie(t) {
+  g.save();
+  g.globalCompositeOperation = 'lighter';
+  g.strokeStyle = 'rgba(210,245,255,0.14)';
+  g.lineWidth = Math.max(1, U * 0.35);
+  for (let i = 0; i < 3; i++) {
+    const y0 = H * (0.012 + i * 0.014);
+    g.beginPath();
+    for (let x = -14; x <= W + 14; x += 14) {
+      const y = y0 + Math.sin(x * 0.018 + t * (1.1 + i * 0.3) + i * 2) * U * 0.45 + Math.sin(x * 0.041 - t * 0.7) * U * 0.25;
+      if (x === -14) g.moveTo(x, y); else g.lineTo(x, y);
+    }
+    g.stroke();
+  }
+  g.restore();
+}
+function desenhar(t) {
+  g.globalCompositeOperation = 'source-over';
+  g.globalAlpha = 1;
+  g.drawImage(fundo, 0, 0, W, H);
+  desenharCausticas(t);
+  desenharRaios(t);
+  desenharAlgas(algas, t);
+  desenharParticulas(t);
+  for (const c of ordemDesenho) if (c.estado !== 'escondido') desenharCriatura(c, t);
+  desenharAlgas(algasFrente, t);
+  desenharBolhas();
+  desenharBrilhos();
+  desenharOndas();
+  desenharSuperficie(t);
+  g.drawImage(vinheta, 0, 0, W, H);
+}
+
+/* --- comportamento --- */
+function novoAlvo(c) {
+  const mx = Math.max(c.S * 1.7, W * 0.08);
+  const topo = H * 0.1 + c.S * 0.8;
+  let base = H * 0.72 - c.S * 0.7;
+  if (base < topo + 10) base = topo + 10;
+  const faixa = topo + (base - topo) * ((c.i + 0.5) / criaturas.length);
+  c.tx = rand(mx, Math.max(mx + 1, W - mx));
+  c.ty = clamp(faixa + rand(-0.25, 0.25) * (base - topo), topo, base);
+  c.tempoAlvo = rand(4, 9);
+}
+function nadar(c, dt) {
+  c.tempoAlvo -= dt;
+  const dx = c.tx - c.x, dy = c.ty - c.y, d = Math.hypot(dx, dy);
+  if (c.estado === 'nadar' && (d < c.S * 0.9 || c.tempoAlvo <= 0)) novoAlvo(c);
+  const medusa = c.esp.tipo === 'medusa';
+  let v = U * 10 * c.esp.velo * (c.estado === 'entrando' ? 2 : 1);
+  if (medusa) v *= 0.55 + 0.9 * Math.max(0, Math.sin(c.cauda));
+  const ux = d > 0.001 ? dx / d : 0, uy = d > 0.001 ? dy / d : 0;
+  const k = Math.min(1, dt * (c.estado === 'entrando' ? 1.6 : 0.9));
+  c.vx += (ux * v - c.vx) * k;
+  c.vy += (uy * v * (medusa ? 1 : 0.65) - c.vy) * k;
+}
+function fugir(c, dt) {
+  if (c.atraso > 0) {
+    c.atraso -= dt;
+    const f = Math.exp(-dt * 6);
+    c.vx *= f; c.vy *= f;
+    return;
+  }
+  const k = Math.min(1, dt * 7);
+  c.vx += (c.fx * c.fvel - c.vx) * k;
+  c.vy += (c.fy * c.fvel - c.vy) * k;
+}
+function separar(dt) {
+  for (let a = 0; a < criaturas.length; a++) {
+    const A = criaturas[a];
+    if (A.estado !== 'nadar' && A.estado !== 'entrando') continue;
+    for (let b = a + 1; b < criaturas.length; b++) {
+      const B = criaturas[b];
+      if (B.estado !== 'nadar' && B.estado !== 'entrando') continue;
+      const dx = B.x - A.x, dy = B.y - A.y, d = Math.hypot(dx, dy), min = (A.S + B.S) * 1.25;
+      if (d < min && d > 0.01) {
+        const f = (min - d) / min * U * 40 * dt, ux = dx / d, uy = dy / d;
+        A.vx -= ux * f; A.vy -= uy * f; B.vx += ux * f; B.vy += uy * f;
+      }
+    }
+  }
+}
+function animar(c, dt) {
+  c.x += c.vx * dt; c.y += c.vy * dt;
+  const m = c.S * 3;
+  if (c.estado === 'fugir') {
+    if (c.atraso <= 0 && (c.x < -m || c.x > W + m || c.y < -m || c.y > H + m)) { c.estado = 'escondido'; c.vx = c.vy = 0; return; }
+    if (c.atraso <= 0 && Math.random() < dt * 14) criarBolha(c.x - c.face * c.S * 1.3, c.y + rand(-0.2, 0.2) * c.S, rand(0.3, 0.7) * U, -c.vx * 0.1, -U * 3);
+  } else if (c.estado === 'entrando') {
+    if (c.x > c.S * 1.2 && c.x < W - c.S * 1.2) c.estado = 'nadar';
+  } else {
+    const topo = H * 0.07 + c.S * 0.7, base = H * 0.8 - c.S * 0.6, mx = c.S * 1.3;
+    if (c.y < topo) c.vy += (topo - c.y) * dt * 3;
+    if (c.y > base) c.vy -= (c.y - base) * dt * 3;
+    if (c.x < mx) c.vx += (mx - c.x) * dt * 3;
+    if (c.x > W - mx) c.vx -= (c.x - (W - mx)) * dt * 3;
+  }
+  const vel = Math.hypot(c.vx, c.vy);
+  if (c.esp.tipo === 'peixe') {
+    if (c.estado !== 'fugir' && Math.abs(c.vx) > U * 0.8) c.face = c.vx > 0 ? 1 : -1;
+    c.faceEsc += (c.face - c.faceEsc) * Math.min(1, dt * (c.estado === 'fugir' ? 18 : 5));
+    const alvoRot = clamp(Math.atan2(c.vy, Math.abs(c.vx) + U * 3), -0.5, 0.5);
+    c.rot += (alvoRot - c.rot) * Math.min(1, dt * 4);
+    c.cauda += dt * (3 + vel / U * 0.22) * (c.estado === 'fugir' ? 2.2 : 1);
+  } else {
+    const lim = c.estado === 'fugir' ? Math.PI : 0.45;
+    const alvoRot = vel > U * 4 ? clamp(normAng(Math.atan2(c.vy, c.vx) + Math.PI / 2), -lim, lim) : 0;
+    c.rot += normAng(alvoRot - c.rot) * Math.min(1, dt * 3);
+    c.cauda += dt * (c.estado === 'fugir' ? 9 : 2.2);
+  }
+  c.pulso *= Math.exp(-dt * DECAI[c.esp.camada]);
+  c.susto = Math.max(0, c.susto - dt * 0.8);
+  c.piscar -= dt;
+  if (c.piscar <= 0) { c.piscando = 0.15; c.piscar = rand(2.5, 7); }
+  if (c.piscando > 0) c.piscando -= dt;
+}
+function assustar(c, x, y) {
+  let dx = c.x - x, dy = c.y - y, d = Math.hypot(dx, dy);
+  if (d < 1) { const a = rand(0, TAU); dx = Math.cos(a); dy = Math.sin(a); d = 1; }
+  let fx = dx / d, fy = dy / d;
+  if (c.esp.tipo === 'peixe') { if (Math.abs(fx) < 0.6) fx = fx < 0 ? -0.6 : 0.6; fy *= 0.7; }
+  if (fy > 0.3) { fy = 0.3; if (Math.abs(fx) < 0.6) fx = (fx < 0 || (fx === 0 && Math.random() < 0.5)) ? -0.8 : 0.8; }
+  const n = Math.hypot(fx, fy) || 1;
+  c.fx = fx / n; c.fy = fy / n;
+  c.fvel = rand(90, 125) * U * (c.esp.tipo === 'medusa' ? 0.7 : 1);
+  c.atraso = Math.min(0.22, d / Math.max(W, H) * 0.3);
+  c.estado = 'fugir';
+  c.susto = 1;
+  c.face = c.fx < 0 ? -1 : 1;
+}
+function regressar(c) {
+  const daEsquerda = Math.random() < 0.5, m = c.S * 2.4;
+  c.x = daEsquerda ? -m : W + m;
+  c.y = rand(H * 0.16, H * 0.6);
+  c.vx = (daEsquerda ? 1 : -1) * U * 18; c.vy = 0;
+  c.face = daEsquerda ? 1 : -1; c.faceEsc = c.face; c.rot = 0;
+  c.tx = daEsquerda ? rand(W * 0.22, W * 0.45) : rand(W * 0.55, W * 0.78);
+  c.ty = clamp(c.y + rand(-0.1, 0.1) * H, H * 0.14, H * 0.66);
+  c.tempoAlvo = 8; c.susto = 0; c.pulso = 0;
+  c.estado = 'entrando';
+  Som.trazer(c.esp.camada, presentes());
+}
+function criarBolha(x, y, r, vx, vy) {
+  if (bolhas.length > 170) return;
+  bolhas.push({ x, y, r, vx: vx || 0, vy: vy === undefined ? -rand(6, 11) * U : vy, fase: rand(0, TAU) });
+}
+// cada nota que soa faz o bicho da sua camada pulsar
+function pulsar(camada, s) {
+  const c = porCamada[camada];
+  if (!c || c.estado === 'escondido') return;
+  c.pulso = Math.max(c.pulso, s);
+  if (camada === 2 && s > 0.9 && Math.random() < 0.5) criarBolha(c.x + c.face * c.S * 1.05, c.y + c.S * 0.1, rand(0.5, 0.9) * U, c.face * U * 6, -U * 6);
+  if (camada === 5) {
+    for (let k = 0; k < 3; k++) {
+      if (brilhos.length < 60) brilhos.push({ x: c.x + rand(-1.3, 1.3) * c.S, y: c.y + rand(-1, 0.6) * c.S, r: rand(0.7, 1.4) * U, a: 1, vy: -rand(2, 5) * U });
+    }
+  }
+}
+function atualizar(dt, t) {
+  // regressam um de cada vez, pela ordem das camadas da música
+  if (comecou && t >= proxRegresso && t - ultimoToque >= AJUSTES.esperaAntesDeVoltar) {
+    let prox = null;
+    for (const c of criaturas) if (c.estado === 'escondido' && (!prox || c.esp.camada < prox.esp.camada)) prox = c;
+    if (prox) { regressar(prox); proxRegresso = t + AJUSTES.intervaloEntreRegressos; }
+  }
+  for (const c of criaturas) {
+    if (c.estado === 'fugir') fugir(c, dt);
+    else if (c.estado !== 'escondido') nadar(c, dt);
+  }
+  separar(dt);
+  for (const c of criaturas) if (c.estado !== 'escondido') animar(c, dt);
+  Som.consumir(pulsar);
+
+  // com uma música escolhida, os bichos pulsam com as batidas dela
+  const nv = Som.nivel();
+  if (nv > 0) {
+    mediaNivel = mediaNivel * 0.94 + nv * 0.06;
+    if (nv > mediaNivel * 1.35 && nv > 0.02 && t - ultimoPulsoFaixa > 0.22) {
+      ultimoPulsoFaixa = t;
+      for (const c of criaturas) if (c.estado === 'nadar' || c.estado === 'entrando') c.pulso = Math.max(c.pulso, 0.75);
+    }
+  }
+
+  if (t > proxBolhas) {
+    proxBolhas = t + rand(0.8, 2.2);
+    if (algas.length) {
+      const a = escolher(algas), n = 2 + Math.floor(Math.random() * 4);
+      for (let k = 0; k < n; k++) criarBolha(a.x + rand(-1, 1) * U, a.y - a.h * rand(0.2, 0.6) - k * U * 2.2, rand(0.35, 0.9) * U);
+      if (comecou && Math.random() < 0.25) Som.bolha(0.014, 0.8);
+    }
+  }
+  for (let k = bolhas.length - 1; k >= 0; k--) {
+    const b = bolhas[k];
+    b.vx *= Math.exp(-dt * 2.5);
+    b.vy += (-U * (9 + b.r / U * 4) - b.vy) * Math.min(1, dt * 1.8);
+    b.x += (b.vx + Math.sin(t * 3 + b.fase) * U * 1.5) * dt;
+    b.y += b.vy * dt;
+    if (b.y < H * 0.02 + b.r || b.x < -60 || b.x > W + 60) bolhas.splice(k, 1);
+  }
+  for (const p of particulas) {
+    p.x += (p.vx + Math.sin(t * 0.4 + p.fase) * U * 0.5) * dt;
+    p.y += p.vy * dt;
+    if (p.y < -6) { p.y = H * 0.9; p.x = rand(0, W); }
+    if (p.x < -6) p.x = W + 6; else if (p.x > W + 6) p.x = -6;
+  }
+  for (let k = ondas.length - 1; k >= 0; k--) { const o = ondas[k]; o.r += U * 50 * dt; o.a -= dt * 1.3; if (o.a <= 0) ondas.splice(k, 1); }
+  for (let k = brilhos.length - 1; k >= 0; k--) { const s = brilhos[k]; s.y += s.vy * dt; s.a -= dt * 1.2; if (s.a <= 0) brilhos.splice(k, 1); }
+  turb *= Math.exp(-dt * 1.2);
+}
+
+/* --- avisos no ecrã --- */
+let avisoTimer = 0;
+function avisar(txt, seg) {
+  aviso.textContent = txt;
+  aviso.classList.add('ver');
+  clearTimeout(avisoTimer);
+  avisoTimer = setTimeout(() => aviso.classList.remove('ver'), (seg || 4) * 1000);
+}
+
+/* --- escolher música --- */
+function mostrarMusica() {
+  nomeMusica.textContent = musicaDados ? musicaNome : 'canção de embalar do jogo';
+  escolherBtn.textContent = musicaDados ? 'Trocar' : 'Escolher um ficheiro de música';
+  usarJogoBtn.hidden = !musicaDados;
+}
+function lerFicheiro(f) {
+  if (typeof f.arrayBuffer === 'function') return f.arrayBuffer();
+  return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(r.error); r.readAsArrayBuffer(f); });
+}
+escolherBtn.addEventListener('click', e => { e.stopPropagation(); inputFicheiro.click(); });
+usarJogoBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  musicaDados = null; musicaNome = '';
+  mostrarMusica();
+  BD.apagar().catch(() => {});
+});
+inputFicheiro.addEventListener('click', e => e.stopPropagation());
+inputFicheiro.addEventListener('change', () => {
+  const f = inputFicheiro.files && inputFicheiro.files[0];
+  inputFicheiro.value = '';
+  if (!f) return;
+  if (f.size > 40 * 1024 * 1024) { avisar('Esse ficheiro é grande demais. Escolhe um com menos de 40 MB.', 5); return; }
+  nomeMusica.textContent = 'a carregar…';
+  lerFicheiro(f).then(ab => {
+    musicaDados = ab; musicaNome = f.name || 'música escolhida';
+    mostrarMusica();
+    BD.guardar({ nome: musicaNome, dados: ab }).catch(() => avisar('A música vai tocar, mas não ficou guardada para a próxima vez.', 5));
+  }).catch(() => { mostrarMusica(); avisar('Não consegui abrir esse ficheiro.', 4); });
+});
+BD.ler().then(v => {
+  if (v && v.dados && !comecou) { musicaDados = v.dados; musicaNome = v.nome || 'música escolhida'; mostrarMusica(); }
+}).catch(() => {});
+
+/* --- toques --- */
+function tocar(x, y, forte) {
+  const t = agoraSeg();
+  if (!comecou || t < graca) return;
+  Som.retomar();
+  if (forte) Acordado.retomar();
+  ultimoToque = t;
+  proxRegresso = t + AJUSTES.esperaAntesDeVoltar;
+  let fugiram = false;
+  for (const c of criaturas) if (c.estado === 'nadar' || c.estado === 'entrando') { assustar(c, x, y); fugiram = true; }
+  Som.pausar();
+  turb = Math.min(1.2, turb + (forte ? 0.5 : 0.05));
+  if (fugiram && t - ultimoZas > 0.45) { Som.zas(); ultimoZas = t; }
+  if (forte) {
+    ondas.push({ x, y, r: U * 1.5, a: 1 });
+    for (let k = 0; k < 12; k++) { const a = rand(0, TAU), v = rand(12, 45) * U; criarBolha(x, y, rand(0.4, 1.5) * U, Math.cos(a) * v, Math.sin(a) * v - U * 8); }
+    if (t - ultimoSomBolha > 0.1) { Som.bolha(0.07, 1); ultimoSomBolha = t; }
+  } else if (t - ultimoRastro > 0.05) {
+    ultimoRastro = t;
+    criarBolha(x + rand(-1, 1) * U, y + rand(-1, 1) * U, rand(0.35, 0.9) * U, rand(-4, 4) * U, -rand(4, 10) * U);
+    if (t - ultimoSomBolha > 0.3) { Som.bolha(0.035, 1.3); ultimoSomBolha = t; }
+  }
+}
+function pedirEcraInteiro() {
+  const el = document.documentElement;
+  try {
+    if (document.fullscreenElement || document.webkitFullscreenElement) return;
+    if (el.requestFullscreen) semErro(el.requestFullscreen({ navigationUI: 'hide' }));
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  } catch (e) {}
+}
+/* ===== manter o ecrã ligado =====
+   1) Pede ao sistema para não apagar o ecrã (Wake Lock).
+   2) Como esse pedido costuma ser bloqueado quando a página abre dentro de outra (app do Claude, pré-visualização),
+      toca também, escondido atrás do jogo, um vídeo minúsculo: enquanto há vídeo a tocar, o ecrã não se apaga.
+      No iPhone o vídeo tem de ter som para contar (é silêncio) e não pode estar em "loop". */
+const Acordado = (() => {
+  const MP4 = 'data:video/mp4;base64,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';
+  let bloqueio = null, video = null, fonte = -1, ligado = false, tela = null;
+
+  function pedirAPI() {
+    try {
+      if (bloqueio || !('wakeLock' in navigator) || document.visibilityState !== 'visible') return;
+      navigator.wakeLock.request('screen').then(l => {
+        bloqueio = l;
+        l.addEventListener('release', () => { bloqueio = null; });
+      }).catch(() => {});
+    } catch (e) {}
+  }
+  function bytesMP4() {
+    const s = atob(MP4.slice(MP4.indexOf(',') + 1)), u = new Uint8Array(s.length);
+    for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i);
+    return u;
+  }
+  // tenta várias fontes, porque algumas páginas bloqueiam vídeos embutidos
+  function usarFonte(n) {
+    fonte = n;
+    try {
+      if (n === 0) video.src = MP4;
+      else if (n === 1) video.src = URL.createObjectURL(new Blob([bytesMP4()], { type: 'video/mp4' }));
+      else if (n === 2) {
+        tela = document.createElement('canvas');
+        tela.width = tela.height = 16;
+        const t2 = tela.getContext('2d');
+        const pintar = () => { t2.fillStyle = 'rgb(' + Math.floor(Math.random() * 12) + ',0,0)'; t2.fillRect(0, 0, 16, 16); };
+        pintar();
+        setInterval(pintar, 500);
+        video.removeAttribute('src');
+        video.srcObject = tela.captureStream(2);
+      } else return;
+      if (ligado) semErro(video.play());
+    } catch (e) { if (n < 2) usarFonte(n + 1); }
+  }
+  function criarVideo() {
+    video = document.createElement('video');
+    video.className = 'acordado';
+    video.title = 'Peixinhos Tímidos';
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.setAttribute('aria-hidden', 'true');
+    video.setAttribute('x-webkit-airplay', 'deny');
+    video.playsInline = true;
+    video.disableRemotePlayback = true;
+    video.muted = !EH_IOS;
+    video.preload = 'auto';
+    video.addEventListener('timeupdate', () => { if (!video.srcObject && video.currentTime > 2) video.currentTime = 0.2 + Math.random() * 0.5; });
+    video.addEventListener('ended', () => { if (ligado) { try { video.currentTime = 0; } catch (e) {} semErro(video.play()); } });
+    video.addEventListener('error', () => { if (fonte < 2) usarFonte(fonte + 1); });
+    video.addEventListener('pause', () => {
+      if (ligado && document.visibilityState === 'visible') setTimeout(() => { if (video.paused && document.visibilityState === 'visible') semErro(video.play()); }, 1000);
+    });
+    document.body.appendChild(video);
+    usarFonte(0);
+  }
+  function ligar() {            // chamado no toque de "começar"
+    ligado = true;
+    pedirAPI();
+    if (!video) criarVideo(); else if (video.paused) semErro(video.play());
+  }
+  function retomar() {
+    if (!ligado) return;
+    pedirAPI();
+    if (video && video.paused) semErro(video.play());
+  }
+  function suspender() { if (video && !video.paused) { try { video.pause(); } catch (e) {} } }
+  return { ligar, retomar, suspender };
+})();
+function comecar() {
+  if (comecou) return;
+  Som.iniciar(musicaDados, motivo => {
+    if (motivo === 'ficheiro') avisar('Não consegui ler esse ficheiro de música. Vai tocar a canção do jogo.', 5);
+    else avisar('Este navegador não deixou tocar som. Experimenta abrir o link no Safari ou no Chrome.', 6);
+  });
+  pedirEcraInteiro();
+  Acordado.ligar();
+  inicio.classList.add('fora');
+  comecou = true;
+  const t = agoraSeg();
+  graca = t + 1;
+  ultimoToque = -99;
+  proxRegresso = t + 0.7;
+  setTimeout(() => { if (!Som.aTocarSom()) avisar('Toca no ecrã para ligar o som.', 4); }, 1800);
+}
+inicio.addEventListener('click', e => {
+  if (e.target && e.target.closest && e.target.closest('#caixaMusica')) return;
+  comecar();
+});
+
+function posicao(e) { return [e.clientX - rect.left, e.clientY - rect.top]; }
+let ultX = null, ultY = null;
+window.addEventListener('pointerdown', e => {
+  if (!comecou) return;
+  const [x, y] = posicao(e);
+  ultX = x; ultY = y;
+  tocar(x, y, true);
+});
+window.addEventListener('pointermove', e => {
+  if (!comecou) return;
+  const [x, y] = posicao(e);
+  if (ultX === null || Math.hypot(x - ultX, y - ultY) > 3) { ultX = x; ultY = y; tocar(x, y, false); }
+});
+window.addEventListener('keydown', e => {
+  if (!comecou) {
+    const naMusica = e.target && e.target.closest && e.target.closest('#caixaMusica');
+    if (!naMusica && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); comecar(); }
+    return;
+  }
+  tocar(rand(W * 0.2, W * 0.8), rand(H * 0.2, H * 0.7), true);
+});
+for (const ev of ['contextmenu', 'gesturestart', 'dblclick', 'selectstart']) document.addEventListener(ev, e => e.preventDefault());
+document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
+document.addEventListener('touchstart', e => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') { Som.suspender(); Acordado.suspender(); }
+  else if (comecou) { Som.retomar(); Acordado.retomar(); }
+});
+
+/* --- tamanho do ecrã --- */
+function redimensionar() {
+  const r = cv.getBoundingClientRect();
+  const nW = Math.max(1, Math.round(r.width)), nH = Math.max(1, Math.round(r.height));
+  const sx = nW / W, sy = nH / H;
+  W = nW; H = nH; rect = r;
+  DPR = Math.min(window.devicePixelRatio || 1, 2);
+  cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+  g.setTransform(DPR, 0, 0, DPR, 0, 0);
+  U = Math.min(Math.min(W, H) / 100, 8.5);
+  for (const c of criaturas) {
+    c.S = U * 8.6 * c.esp.tam;
+    if (c.estado !== 'escondido') { c.x *= sx; c.y *= sy; c.tx *= sx; c.ty *= sy; }
+  }
+  bolhas.length = 0; ondas.length = 0; brilhos.length = 0;
+  gerarAlgas(); gerarParticulas(); gerarRaios(); construirFundo();
+}
+let pendente = false;
+function aoRedimensionar() {
+  if (pendente) return;
+  pendente = true;
+  requestAnimationFrame(() => { pendente = false; redimensionar(); });
+}
+window.addEventListener('resize', aoRedimensionar);
+window.addEventListener('orientationchange', aoRedimensionar);
+
+/* --- ciclo --- */
+let anterior = 0;
+function quadro(ms) {
+  const t = ms / 1000;
+  const dt = anterior ? clamp(t - anterior, 0, 0.05) : 0.016;
+  anterior = t;
+  atualizar(dt, t);
+  desenhar(t);
+  requestAnimationFrame(quadro);
+}
+redimensionar();
+requestAnimationFrame(quadro);
+})();
+</script>
+</body>
+</html>

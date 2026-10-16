@@ -1,0 +1,17 @@
+/* Só a página Others. O cartão da árvore (.codigo) e os cartões vivem em base.css. */
+
+.outros-topo { display: grid; gap: var(--e-7); align-items: center; padding-top: var(--e-5); margin-bottom: var(--e-8); }
+@media (min-width: 64rem) {
+  .outros-topo { grid-template-columns: 1.1fr 0.9fr; }
+}
+.outros-intro { max-width: var(--largura-texto); }
+.outros-intro h1 { font-size: clamp(2.4rem, 1.6rem + 3vw, 3.4rem); }
+
+/* A árvore lê-se melhor sem quebrar linhas */
+.outros-topo .codigo__corpo { white-space: pre; overflow-x: auto; }
+.outros-topo .codigo__corpo a { text-decoration: none; }
+.outros-topo .codigo__corpo a:hover { text-decoration: underline; }
+
+#outros .seccao { margin-top: 0; scroll-margin-top: calc(var(--altura-cabecalho) + var(--e-4)); }
+#outros .seccao + .seccao { margin-top: var(--e-8); }
+#outros .seccao > .texto-suave { margin: 0 0 var(--e-5); max-width: var(--largura-texto); }

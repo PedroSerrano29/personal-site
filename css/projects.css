@@ -6,10 +6,6 @@
 #projetos .seccao { margin-top: 0; }
 #projetos .seccao + .seccao { margin-top: var(--e-8); }
 
-.seccao__titulo { display: flex; align-items: baseline; gap: var(--e-3); margin-bottom: var(--e-5); }
-.seccao__titulo h2 { margin: 0; font-size: var(--t-xl); }
-.seccao__contagem { font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--cor-texto-fraco); }
-
 /* Esqueleto enquanto carrega - só forma, sem animação */
 .esqueleto { min-height: 9rem; }
 .esqueleto .barra { display: block; background: var(--cor-superficie-2); border-radius: var(--raio-sm); height: 0.85em; }

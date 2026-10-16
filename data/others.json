@@ -1,0 +1,34 @@
+{
+  "docs": "Content of the Others page. Each section is a folder in the tree; add an item to a section's list and it shows up on the page, with no code to change. href is relative to the site root. A new section is a new object in seccoes. unidade: singular and plural for the count beside the title.",
+  "seccoes": [
+    {
+      "pasta": "my-legacy",
+      "titulo": "My legacy",
+      "texto": "What I'm building for my daughter, to keep.",
+      "unidade": ["page", "pages"],
+      "itens": [
+        {
+          "titulo": "Maria-do-Mar",
+          "href": "Maria-do-Mar/",
+          "texto": "Her page: the time since she was born, always counting.",
+          "nota": "In Portuguese"
+        }
+      ]
+    },
+    {
+      "pasta": "games",
+      "titulo": "Games",
+      "texto": "Small games I make for her, to play on a phone or tablet.",
+      "unidade": ["game", "games"],
+      "itens": [
+        {
+          "titulo": "Peixinhos Tímidos",
+          "href": "games/peixinhos-timidos/",
+          "texto": "Shy fish swim to a lullaby. Touch the screen and they hide and the music stops; wait calmly and they come back one by one, bringing the music with them.",
+          "etiquetas": ["canvas", "web-audio", "touch"],
+          "nota": "In Portuguese"
+        }
+      ]
+    }
+  ]
+}

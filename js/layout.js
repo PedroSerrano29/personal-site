@@ -12,6 +12,7 @@
     { href: "index.html", texto: "Home" },
     { href: "projects.html", texto: "Projects" },
     { href: "resume.html", texto: "CV" },
+    { href: "others.html", texto: "Others" },
   ];
 
   const CONTACTOS = {
