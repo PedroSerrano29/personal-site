@@ -111,7 +111,7 @@
     },
     "fea-verification": {
       "title": "FEA Verification",
-      "blurb": "Structural FEA built only from open-source tools: a CadQuery model, meshed in Gmsh and solved in CalculiX, checked against beam theory before any result is trusted. The cantilever case matches within 0.4% and is mesh-converged. The verification also caught a CalculiX multithreading bug that returned wrong answers in 3 of 20 identical runs.",
+      "blurb": "Structural FEA built only from open-source tools: CadQuery models, meshed in Gmsh and solved in CalculiX, each checked against a closed-form solution before any result is trusted. A cantilever matches beam theory within 0.4%; a plate with a hole matches Peterson's stress concentration factor within 0.6%, modelled as a quarter with symmetry. The verification also caught a CalculiX multithreading bug that returned wrong answers in 3 of 20 identical runs.",
       "tags": [
         "cadquery",
         "gmsh",
