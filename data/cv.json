@@ -119,6 +119,7 @@
     { "name": "Enterprise systems", "keywords": ["SAP", "Salesforce"] },
     { "name": "Web & tooling", "keywords": ["Flask", "Git", "GitHub", "Linux"] },
     { "name": "Machine learning", "keywords": ["TensorFlow", "Keras", "scikit-learn", "Forecasting"] },
+    { "name": "Engineering simulation", "keywords": ["FEA (CalculiX)", "Gmsh", "CadQuery", "Mesh convergence"] },
     { "name": "Aftersales business", "keywords": ["Parts & inventory management", "OEM and dealer relations", "Warranty analysis", "Service contracts", "Service-level analysis", "Stock optimization", "Team leadership"] }
   ],
   "languages": [
@@ -128,8 +129,14 @@
   ],
   "projects": [
     {
+      "name": "FEA Verification",
+      "description": "Open-source structural FEA, each case verified against a closed-form solution: a cantilever within 0.4% of beam theory, a plate with a hole within 0.6% of Peterson's Kt. The checks caught a CalculiX multithreading bug.",
+      "keywords": ["Python", "CalculiX", "Gmsh", "CadQuery", "FEA"],
+      "url": "https://github.com/PedroSerrano29/fea-verification"
+    },
+    {
       "name": "Deep Learning Specialization",
-      "description": "Coursework in TensorFlow/Keras and scikit-learn, run on a laptop CPU. A hand-built 422K-parameter CNN matches a pre-trained ResNet50 56× its size on Fashion-MNIST (92.6% vs 92.1% accuracy) and trains 16× faster.",
+      "description": "A hand-built 422K-parameter CNN matches a pre-trained ResNet50 56× its size (92.6% vs 92.1%).",
       "keywords": ["TensorFlow", "Keras", "scikit-learn", "Computer vision"],
       "url": "https://github.com/PedroSerrano29/deep-learning-specialization"
     },
@@ -144,12 +151,6 @@
       "description": "Vehicle-rental web platform: a Flask REST API (SQLAlchemy, JWT auth, pytest) holds every business rule; a vanilla JavaScript front end only consumes it.",
       "keywords": ["Python", "Flask", "SQLAlchemy", "JWT", "JavaScript"],
       "url": "https://github.com/PedroSerrano29/luxury_wheels"
-    },
-    {
-      "name": "UIO_ScrapRate_PT",
-      "description": "Checks in bulk whether Portuguese vehicle registrations are active or cancelled.",
-      "keywords": ["Python", "BeautifulSoup", "Pandas", "Multithreading"],
-      "url": "https://github.com/PedroSerrano29/UIO_ScrapRate_PT"
     }
   ],
   "volunteer": [
@@ -161,6 +162,6 @@
     }
   ],
   "meta": {
-    "lastModified": "2026-10-15"
+    "lastModified": "2026-11-23"
   }
 }
