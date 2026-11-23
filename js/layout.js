@@ -8,6 +8,12 @@
 
   const semMovimento = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Páginas em subpastas dizem onde está a raiz (data-raiz="../") e que entrada do menu acendem (data-menu)
+  const script = document.currentScript;
+  const base = script.dataset.raiz || "";
+  // Dentro de uma pré-visualização (iframe) não há cabeçalho nem rodapé
+  if (window.self !== window.top) raiz.classList.add("embutido");
+
   const PAGINAS = [
     { href: "index.html", texto: "Home" },
     { href: "projects.html", texto: "Projects" },
@@ -114,24 +120,24 @@
 
   // ---------- Cabeçalho ----------
 
-  const atual = location.pathname.split("/").pop() || "index.html";
+  const atual = script.dataset.menu || location.pathname.split("/").pop() || "index.html";
 
   const cabecalho = el("header", { class: "cabecalho" },
     el("div", { class: "container cabecalho__interior" },
-      el("a", { class: "marca", href: "index.html", "aria-label": "Pedro Serrano, home" },
+      el("a", { class: "marca", href: `${base}index.html`, "aria-label": "Pedro Serrano, home" },
         el("span", { class: "marca__sinal", "aria-hidden": "true", text: ">" }),
         "pedro serrano",
         el("span", { class: "marca__cursor", "aria-hidden": "true", text: "_" })
       ),
       el("nav", { "aria-label": "Main" },
         el("ul", {}, PAGINAS.map((p) =>
-          el("li", {}, el("a", { href: p.href, "aria-current": p.href === atual ? "page" : null, text: p.texto }))
+          el("li", {}, el("a", { href: base + p.href, "aria-current": p.href === atual ? "page" : null, text: p.texto }))
         ))
       )
     )
   );
 
-  document.currentScript.after(
+  script.after(
     el("a", { class: "skip-link", href: "#conteudo", text: "Skip to content" }),
     cabecalho
   );

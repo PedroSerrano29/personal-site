@@ -1,7 +1,26 @@
 {
-  "generatedAt": "2026-10-15",
+  "generatedAt": "2026-11-23",
   "source": "api.github.com/users/PedroSerrano29/repos",
   "repos": [
+    {
+      "name": "fea-verification",
+      "description": "Structural FEA with open-source tools (CadQuery, Gmsh, CalculiX), verified against closed-form solutions",
+      "html_url": "https://github.com/PedroSerrano29/fea-verification",
+      "homepage": null,
+      "language": "Python",
+      "topics": [
+        "cadquery",
+        "calculix",
+        "fea",
+        "finite-element-analysis",
+        "gmsh",
+        "python"
+      ],
+      "updated_at": "2026-11-23T06:00:00Z",
+      "fork": false,
+      "archived": false,
+      "stargazers_count": 0
+    },
     {
       "name": "luxury_wheels",
       "description": "Vehicle-rental platform: a Flask REST API (SQLAlchemy, JWT auth, pytest) holds every business rule; a vanilla JavaScript front end only consumes it. Final project of my Python course, built and defended.",

@@ -1,24 +1,27 @@
 {
-  "docs": "Content of the Others page. Each section is a folder in the tree; add an item to a section's list and it shows up on the page, with no code to change. href is relative to the site root. A new section is a new object in seccoes. unidade: singular and plural for the count beside the title.",
+  "docs": "Content of the Others page and its folders. others.html shows one card per section (no names inside); each section's own page (pagina) lists its items with a live preview. To add a page or a game, add an item to the right section: titulo, href (relative to the site root), texto, and optional etiquetas and nota. unidade: singular and plural for the count.",
   "seccoes": [
     {
       "pasta": "my-legacy",
+      "pagina": "legacy.html",
       "titulo": "My legacy",
-      "texto": "What I'm building for my daughter, to keep.",
-      "unidade": ["page", "pages"],
+      "resumo": "Natural intelligence projects, built to last.",
+      "unidade": ["project", "projects"],
       "itens": [
         {
-          "titulo": "Maria-do-Mar",
-          "href": "Maria-do-Mar/",
-          "texto": "Her page: the time since she was born, always counting.",
-          "nota": "In Portuguese"
+          "titulo": "MdM",
+          "href": "mdm/",
+          "texto": "A natural intelligence, deployed in January 2025: live uptime, the next release, growth metrics and the changelog.",
+          "etiquetas": ["natural-intelligence", "growth-metrics"],
+          "nota": "In production since 2025"
         }
       ]
     },
     {
       "pasta": "games",
+      "pagina": "games.html",
       "titulo": "Games",
-      "texto": "Small games I make for her, to play on a phone or tablet.",
+      "resumo": "Small games for small players.",
       "unidade": ["game", "games"],
       "itens": [
         {

@@ -1,0 +1,7 @@
+{
+  "docs": "Data for the MdM page. deployment: the birth instant, ISO 8601 with its offset (Lisbon is UTC+0 in January). medicoes: one object per measurement, with data as YYYY-MM-DD, peso in kg and altura in cm (lying length before 2 years, standing height after); either value can be left out. conquistas: milestones, in any order, with data as YYYY-MM-DD, titulo and an optional texto. The page works out ages, versions, BMI and WHO percentiles by itself.",
+  "nome": "MdM",
+  "deployment": "2025-01-23T19:33:00+00:00",
+  "medicoes": [],
+  "conquistas": []
+}

@@ -2,6 +2,7 @@
   "docs": "Curation layer on top of the GitHub API. The page lists every public repository automatically; this file only adds what the API cannot express. Any repo missing here still shows up, using its GitHub description. featured: pinned to the top, in this order. overrides: title (display name), blurb (replaces the GitHub description), demo (live link), tags (extra labels beside the GitHub topics), hidden (true to leave it out). private: repositories that are not public, written here by hand (title, blurb, tags, status). Private repositories are never read automatically: one only appears if it is written here. When it becomes public, the API lists it and this entry stops being used as a private card.",
   "featured": [
     "aftersales-scorecard",
+    "fea-verification",
     "deep-learning-specialization",
     "jarvis-nlu",
     "luxury_wheels",
@@ -106,6 +107,17 @@
         "scikit-learn",
         "computer-vision",
         "cnn"
+      ]
+    },
+    "fea-verification": {
+      "title": "FEA Verification",
+      "blurb": "Structural FEA built only from open-source tools: a CadQuery model, meshed in Gmsh and solved in CalculiX, checked against beam theory before any result is trusted. The cantilever case matches within 0.4% and is mesh-converged. The verification also caught a CalculiX multithreading bug that returned wrong answers in 3 of 20 identical runs.",
+      "tags": [
+        "cadquery",
+        "gmsh",
+        "calculix",
+        "fea",
+        "python"
       ]
     }
   },

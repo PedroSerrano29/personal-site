@@ -1,0 +1,266 @@
+/* MdM: tema de mar por cima do site. Troca os tokens de cor e acrescenta luz, bolhas e ondas, tudo em CSS. */
+
+:root {
+  --cor-fundo: #031a2c;
+  --cor-superficie: #072a45;
+  --cor-superficie-2: #0a3556;
+  --cor-borda: #134a72;
+  --cor-borda-forte: #1d5f8f;
+  --cor-grelha: rgb(255 255 255 / 0.04);
+  --cor-texto: #e9f6ff;
+  --cor-texto-suave: #b0cde0;
+  --cor-texto-fraco: #86a9c2;
+  --cor-marca: #5fd4ea;
+  --cor-marca-forte: #a3e8f5;
+  --cor-marca-suave: rgb(95 212 234 / 0.12);
+  --cor-marca-brilho: rgb(140 230 255 / 0.26);
+  --cor-sobre-marca: #022033;
+  /* Gráficos: validados contra a superfície #072a45 (contraste, daltonismo, luminosidade) */
+  --cor-curva: #1d9cbd;
+  --cor-ela: #e46a46;
+  --cor-areia: #f1d49c;
+}
+
+/* ---------- Água: luz de cima, raios a ondular e bolhas a subir ---------- */
+
+body {
+  overflow-x: clip;
+  background:
+    radial-gradient(70rem 30rem at 50% -10rem, var(--cor-marca-brilho), transparent 70%),
+    linear-gradient(180deg, #0b4a73 0, #06304f 30rem, #04223a 70rem, var(--cor-fundo) 110rem);
+  background-color: var(--cor-fundo);
+}
+body::before {
+  inset: 0 -80px;
+  background-image: repeating-linear-gradient(100deg, rgb(200 240 255 / 0.05) 0 3px, transparent 3px 120px);
+  background-size: auto;
+  mask-image: linear-gradient(180deg, #000, transparent 60%);
+  animation: raios 16s ease-in-out infinite alternate;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.6;
+  background-image:
+    radial-gradient(circle, rgb(220 245 255 / 0.35) 0 2px, transparent 3px),
+    radial-gradient(circle, rgb(220 245 255 / 0.22) 0 3px, transparent 4px),
+    radial-gradient(circle, rgb(220 245 255 / 0.2) 0 1.5px, transparent 2.5px);
+  background-size: 180px 260px, 260px 340px, 120px 200px;
+  background-position: 20px 0, 90px 40px, 50px 120px;
+  mask-image: linear-gradient(transparent, #000 25%, #000 80%, transparent);
+  animation: bolhas 30s linear infinite;
+}
+@keyframes raios { to { transform: translateX(60px); } }
+/* Cada camada sobe exatamente a altura do seu padrão: o ciclo fecha sem salto */
+@keyframes bolhas { to { background-position: 20px -260px, 90px -300px, 50px -80px; } }
+
+.cabecalho--rolado { background: rgb(3 26 44 / 0.8); }
+
+/* ---------- Topo ---------- */
+
+.mar-topo { position: relative; padding-top: var(--e-8); }
+.mar-topo .rotulo a { color: inherit; text-decoration: none; }
+.mar-topo .rotulo a:hover { text-decoration: underline; }
+.mar-nome {
+  margin: var(--e-3) 0 var(--e-3);
+  font-size: clamp(3.4rem, 2rem + 7vw, 6.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, #ffffff 20%, var(--cor-marca-forte) 70%, var(--cor-marca));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.mar-lead { margin: 0; max-width: 34rem; font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem); color: var(--cor-texto-suave); }
+.mar-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  margin: var(--e-5) 0 0;
+  padding: var(--e-1) var(--e-3);
+  border: 1px solid var(--cor-borda-forte);
+  border-radius: var(--raio-pill);
+  background: rgb(7 42 69 / 0.6);
+  font-family: var(--fonte-mono);
+  font-size: var(--t-xs);
+  color: var(--cor-texto-suave);
+}
+.mar-pill__ponto { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--cor-marca); box-shadow: 0 0 0 0 rgb(95 212 234 / 0.6); animation: pulsar-mar 2.4s ease-out infinite; }
+@keyframes pulsar-mar { 70%, 100% { box-shadow: 0 0 0 8px rgb(95 212 234 / 0); } }
+
+/* Ondas a passar por baixo do topo, de ponta a ponta do ecrã */
+.mar-topo::after {
+  content: "";
+  display: block;
+  height: 56px;
+  margin: var(--e-7) calc(50% - 50vw) 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 56' preserveAspectRatio='none'%3E%3Cpath d='M0 28 C 100 8 200 8 300 28 S 500 48 600 28 V56 H0Z' fill='%235fd4ea' fill-opacity='.10'/%3E%3C/svg%3E") repeat-x 0 0 / 600px 56px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 56' preserveAspectRatio='none'%3E%3Cpath d='M0 36 C 100 20 200 20 300 36 S 500 52 600 36 V56 H0Z' fill='%235fd4ea' fill-opacity='.08'/%3E%3C/svg%3E") repeat-x 0 0 / 420px 56px;
+  animation: ondas 18s linear infinite;
+}
+@keyframes ondas { to { background-position: 600px 0, -420px 0; } }
+
+/* ---------- Secções ---------- */
+
+/* .botao e .relogio têm display próprio, que ganharia ao atributo hidden */
+.mar-seccao [hidden] { display: none !important; }
+
+.mar-seccao { margin-top: var(--e-8); }
+.mar-seccao h2 { font-size: var(--t-2xl, 1.8rem); margin: 0 0 var(--e-5); }
+.mar-intro { max-width: 40rem; margin: calc(-1 * var(--e-3)) 0 var(--e-5); }
+
+/* Mostradores de vidro: uptime e contagem */
+.relogio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(7.5rem, 100%), 1fr));
+  gap: var(--e-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.relogio--curto { grid-template-columns: repeat(auto-fit, minmax(min(6.5rem, 100%), 1fr)); max-width: 36rem; }
+.tempo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-1);
+  padding: var(--e-4) var(--e-4) var(--e-3);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.02));
+  backdrop-filter: blur(6px);
+}
+.tempo__valor { font-size: clamp(1.8rem, 1.3rem + 2vw, 2.6rem); font-weight: 650; line-height: 1.1; color: var(--cor-texto); }
+.relogio .tempo:nth-child(n + 4) .tempo__valor { font-variant-numeric: tabular-nums; }
+.tempo__rotulo { font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--cor-texto-fraco); text-transform: uppercase; letter-spacing: 0.06em; }
+.mar-totais { margin: var(--e-4) 0 0; font-family: var(--fonte-mono); font-size: var(--t-sm); color: var(--cor-texto-suave); }
+
+/* Próxima versão */
+.mar-versao {
+  padding: var(--e-6);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: linear-gradient(160deg, rgb(95 212 234 / 0.08), transparent 60%), var(--cor-superficie);
+}
+.mar-versao__titulo { margin: 0 0 var(--e-4); font-size: var(--t-lg); font-weight: 600; }
+.mar-versao__estado:empty { display: none; }
+.mar-versao__estado { margin: 0; font-size: var(--t-lg); color: var(--cor-areia); }
+.mar-versao__escolha { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-3); margin-top: var(--e-5); font-size: var(--t-sm); color: var(--cor-texto-suave); }
+.campo {
+  color-scheme: dark;
+  padding: var(--e-2) var(--e-3);
+  border: 1px solid var(--cor-borda-forte);
+  border-radius: var(--raio-sm);
+  background: var(--cor-superficie-2);
+  color: var(--cor-texto);
+  font: inherit;
+}
+.botao--pequeno { padding: var(--e-2) var(--e-3); font-size: var(--t-sm); }
+
+/* ---------- Crescimento ---------- */
+
+.medidas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+  gap: var(--e-3);
+  list-style: none;
+  margin: 0 0 var(--e-5);
+  padding: 0;
+}
+.medida {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--e-4);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+}
+.medida__nome { font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--cor-texto-fraco); text-transform: uppercase; letter-spacing: 0.06em; }
+.medida__valor { font-size: 2rem; font-weight: 650; line-height: 1.2; }
+.medida__valor small { font-size: var(--t-sm); font-weight: 500; color: var(--cor-texto-suave); }
+.medida__pc { font-family: var(--fonte-mono); font-size: var(--t-sm); color: var(--cor-marca-forte); }
+.medida__data { font-size: var(--t-xs); color: var(--cor-texto-fraco); }
+
+.graficos { display: grid; gap: var(--e-4); grid-template-columns: repeat(auto-fit, minmax(min(30rem, 100%), 1fr)); }
+.grafico { margin: 0; padding: var(--e-5); border: 1px solid var(--cor-borda); border-radius: var(--raio); background: var(--cor-superficie); min-width: 0; }
+.grafico h3 { margin: 0; font-size: var(--t-base); }
+.grafico__sub { margin: 0; font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--cor-texto-fraco); }
+.legenda { display: flex; flex-wrap: wrap; gap: var(--e-2) var(--e-4); list-style: none; margin: var(--e-3) 0; padding: 0; font-size: var(--t-xs); color: var(--cor-texto-suave); }
+.legenda li { display: flex; align-items: center; gap: var(--e-2); }
+.legenda__linha { width: 16px; height: 2px; border-radius: 1px; background: var(--cor-curva); }
+.legenda__ponto { width: 10px; height: 10px; border-radius: 50%; background: var(--cor-ela); }
+.grafico__vazio { margin: var(--e-3) 0 0; font-size: var(--t-sm); color: var(--cor-texto-fraco); }
+
+.grafico__area { position: relative; }
+.grafico__area svg { display: block; overflow: visible; }
+.grafico__grelha { stroke: var(--cor-borda); stroke-width: 1; }
+.grafico__eixo, .grafico__etiqueta { fill: var(--cor-texto-fraco); font-family: var(--fonte-mono); font-size: 11px; font-variant-numeric: tabular-nums; }
+.grafico__faixa { fill: var(--cor-curva); opacity: 0.07; }
+.grafico__faixa--meio { opacity: 0.1; }
+.grafico__curva { fill: none; stroke: var(--cor-curva); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.6; }
+.grafico__curva--p3, .grafico__curva--p97 { opacity: 0.4; }
+.grafico__curva--p50 { stroke-width: 2; opacity: 1; }
+.grafico__trajeto { fill: none; stroke: var(--cor-ela); stroke-width: 1.5; opacity: 0.5; }
+.grafico__marca { fill: var(--cor-ela); stroke: var(--cor-superficie); stroke-width: 2; transition: r 150ms ease; }
+.grafico__alvo { fill: transparent; }
+.grafico__ponto { cursor: pointer; outline: none; }
+.grafico__ponto:hover .grafico__marca, .grafico__ponto:focus-visible .grafico__marca { r: 7; }
+.grafico__ponto:focus-visible .grafico__alvo { stroke: var(--cor-marca); stroke-width: 2; }
+.grafico__ultimo { fill: var(--cor-texto); font-size: 12px; font-weight: 600; paint-order: stroke; stroke: var(--cor-superficie); stroke-width: 4px; stroke-linejoin: round; }
+.grafico__dica {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 14px));
+  padding: var(--e-2) var(--e-3);
+  border: 1px solid var(--cor-borda-forte);
+  border-radius: var(--raio-sm);
+  background: var(--cor-superficie-2);
+  box-shadow: var(--sombra);
+  font-size: var(--t-xs);
+  color: var(--cor-texto-suave);
+  white-space: nowrap;
+}
+.grafico__dica[hidden] { display: none; }
+.grafico__dica strong { font-size: var(--t-sm); color: var(--cor-texto); }
+
+.mar-tabela { margin-top: var(--e-5); }
+.mar-tabela summary { cursor: pointer; font-size: var(--t-sm); color: var(--cor-texto-suave); }
+.mar-tabela__rolo { overflow-x: auto; margin-top: var(--e-3); }
+.mar-tabela table { width: 100%; border-collapse: collapse; font-size: var(--t-sm); font-variant-numeric: tabular-nums; }
+.mar-tabela th, .mar-tabela td { padding: var(--e-2) var(--e-3); border-bottom: 1px solid var(--cor-borda); text-align: right; white-space: nowrap; }
+.mar-tabela th:nth-child(-n + 2), .mar-tabela td:nth-child(-n + 2) { text-align: left; }
+.mar-tabela th { font-size: var(--t-xs); font-weight: 600; color: var(--cor-texto-fraco); text-transform: uppercase; letter-spacing: 0.04em; }
+.tabela__pc { font-family: var(--fonte-mono); color: var(--cor-marca-forte); }
+
+/* ---------- Changelog ---------- */
+
+.changelog { list-style: none; margin: 0 0 0 0.35rem; padding: 0; border-left: 1px solid var(--cor-borda-forte); }
+.registo { position: relative; padding: 0 0 var(--e-6) var(--e-5); }
+.registo:last-child { padding-bottom: 0; }
+.registo::before {
+  content: "";
+  position: absolute;
+  left: calc(-0.35rem - 1px);
+  top: 0.4rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--cor-fundo);
+  border: 2px solid var(--cor-marca);
+}
+.registo:first-child::before { background: var(--cor-marca); box-shadow: 0 0 0 4px var(--cor-marca-suave); }
+.registo__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-2); margin: 0; font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--cor-texto-fraco); }
+.registo__versao { padding: 0 var(--e-2); border-radius: var(--raio-pill); background: var(--cor-marca-suave); color: var(--cor-marca-forte); }
+.registo__titulo { margin: var(--e-2) 0 var(--e-1); font-size: var(--t-lg); }
+.registo__texto { margin: 0; color: var(--cor-texto-suave); }
+
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after, .mar-topo::after, .mar-pill__ponto { animation: none; }
+}

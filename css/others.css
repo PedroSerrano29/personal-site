@@ -1,17 +1,37 @@
-/* Só a página Others. O cartão da árvore (.codigo) e os cartões vivem em base.css. */
+/* Só a página Others e as suas pastas (legacy.html, games.html). Os cartões vivem em base.css. */
 
-.outros-topo { display: grid; gap: var(--e-7); align-items: center; padding-top: var(--e-5); margin-bottom: var(--e-8); }
-@media (min-width: 64rem) {
-  .outros-topo { grid-template-columns: 1.1fr 0.9fr; }
-}
-.outros-intro { max-width: var(--largura-texto); }
+.outros-intro { max-width: var(--largura-texto); padding-top: var(--e-5); margin-bottom: var(--e-7); }
 .outros-intro h1 { font-size: clamp(2.4rem, 1.6rem + 3vw, 3.4rem); }
+.outros-intro .rotulo a { color: inherit; text-decoration: none; }
+.outros-intro .rotulo a:hover { text-decoration: underline; }
 
-/* A árvore lê-se melhor sem quebrar linhas */
-.outros-topo .codigo__corpo { white-space: pre; overflow-x: auto; }
-.outros-topo .codigo__corpo a { text-decoration: none; }
-.outros-topo .codigo__corpo a:hover { text-decoration: underline; }
+/* ---------- Pastas ---------- */
 
-#outros .seccao { margin-top: 0; scroll-margin-top: calc(var(--altura-cabecalho) + var(--e-4)); }
-#outros .seccao + .seccao { margin-top: var(--e-8); }
-#outros .seccao > .texto-suave { margin: 0 0 var(--e-5); max-width: var(--largura-texto); }
+.grelha--pastas { grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr)); }
+.cartao--pasta { min-height: 11rem; }
+.cartao__caminho { margin: 0; font-family: var(--fonte-mono); font-size: var(--t-xs); color: var(--cor-marca); }
+.cartao--pasta .cartao__titulo { font-size: var(--t-xl); }
+
+/* ---------- Lista com pré-visualização ---------- */
+
+.grelha--itens { grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr)); }
+.cartao--item .cartao__titulo { font-size: var(--t-lg); }
+
+/* Encosta às margens do cartão: anula o padding por cima e dos lados */
+.preview {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin: calc(-1 * var(--e-5)) calc(-1 * var(--e-5)) var(--e-2);
+  overflow: hidden;
+  background: var(--cor-superficie-2);
+  border-bottom: 1px solid var(--cor-borda);
+}
+.preview iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  transform: scale(var(--escala, 0.28));
+  transform-origin: 0 0;
+  pointer-events: none;
+}

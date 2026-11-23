@@ -56,6 +56,10 @@ code { font-family: var(--fonte-mono); font-size: 0.9em; }
 .texto-suave { color: var(--cor-texto-suave); }
 .mono { font-family: var(--fonte-mono); }
 
+/* Pré-visualização dentro de outra página: só o conteúdo */
+.embutido .cabecalho, .embutido .rodape, .embutido .skip-link { display: none; }
+.embutido { scrollbar-width: none; }
+
 .visualmente-oculto {
   position: absolute;
   width: 1px; height: 1px;
